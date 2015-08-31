@@ -1,7 +1,7 @@
 ﻿<gitsync-options>
 	<global>
 		<email-domain>server.com</email-domain>
-		<v8-executable>1cv8.exe</v8-executable>
+		<v8-version>1cv8.exe</v8-version>
 		<git-executable>git</git-executable>
 	</global>
 	<repositories>
@@ -10,7 +10,7 @@
 			<git-remote>адрес1</git-remote>
 			<v8-storage-dir>каталог1</v8-storage-dir>
 			<email-domain/>
-			<v8-executable/>
+			<v8-version/>
 			<git-executable/>
 		</repo>
 		<repo name="test2">
@@ -18,13 +18,8 @@
 			<git-remote>адрес2</git-remote>
 			<v8-storage-dir>каталог2</v8-storage-dir>
 			<email-domain>gmail.com</email-domain>
-			<v8-executable/>
+			<v8-version/>
 			<git-executable/>
 		</repo>
 	</repositories>
-	<buildserver url="localhost">
-		<user></user>
-		<password></password>
-		<build-id></build-id>
-	</buildserver>
 </gitsync-options>
