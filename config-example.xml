@@ -1,0 +1,25 @@
+﻿<gitsync-options>
+	<global>
+		<email-domain>server.com</email-domain>
+		<v8-version>8.3.6</v8-version>
+		<git-executable>git</git-executable>
+	</global>
+	<repositories>
+		<repo name="test">
+			<git-local-path>путь1</git-local-path>
+			<git-remote>адрес1</git-remote>
+			<v8-storage-dir>каталог1</v8-storage-dir>
+			<email-domain/>
+			<v8-version/>
+			<git-executable/>
+		</repo>
+		<repo name="test2">
+			<git-local-path>путь2</git-local-path>
+			<git-remote>адрес2</git-remote>
+			<v8-storage-dir>каталог2</v8-storage-dir>
+			<email-domain>gmail.com</email-domain>
+			<v8-version/>
+			<git-executable/>
+		</repo>
+	</repositories>
+</gitsync-options>
