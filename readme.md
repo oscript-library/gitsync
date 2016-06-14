@@ -1,5 +1,7 @@
 #Синхронизация хранилища 1С с репозиторием git
 
+Обсудить [![Join the chat at https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/EvilBeaver/oscript-library.svg)](https://gitter.im/EvilBeaver/oscript-library?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Введение
 Проект является глубоким рефакторингом утилиты v83unpack ([https://github.com/xDrivenDevelopment/v83unpack](https://github.com/xDrivenDevelopment/v83unpack)).
 
