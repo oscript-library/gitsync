@@ -10,16 +10,11 @@
     },
     "isShellCommand": true,
     "showOutput": "silent",
-    "args": [
-        "-encoding=utf-8"
-    ],
     "tasks": [
         {
             "taskName": "Testing project",
             "args": [
-                 "oscript",
-                 "-encoding=utf-8",
-                "${workspaceRoot}/../../1testrunner/testrunner.os",
+                 "1testrunner",
                 "-runall",
                 "${workspaceRoot}/tests"
             ],
@@ -41,9 +36,7 @@
         {
             "taskName": "Testing current test-file",
             "args": [
-                 "oscript",
-                 "-encoding=utf-8",
-                "${workspaceRoot}/../../1testrunner/testrunner.os",
+                 "1testrunner",
                 "-run",
                 "${file}",
             ],
@@ -65,10 +58,8 @@
         {
             "taskName": "Exec all features",
             "args": [
-                 "oscript",
-                 "-encoding=utf-8",
-                "${workspaceRoot}/../1bdd/src/bdd.os",
-                "${workspaceRoot}/.",
+                 "1bdd",
+                "${workspaceRoot}/features",
                 "-out", 
                 "${workspaceRoot}/exec.log"
             ],
@@ -90,9 +81,7 @@
         {
             "taskName": "Exec feature",
             "args": [
-                 "oscript",
-                 "-encoding=utf-8",
-                "${workspaceRoot}/../1bdd/src/bdd.os",
+                 "1bdd",
                 "${file}",
                 "-out", 
                 "${workspaceRoot}/exec.log"
@@ -117,9 +106,7 @@
         {
             "taskName": "Generate feature steps",
             "args": [
-                 "oscript",
-                 "-encoding=utf-8",
-                "${workspaceRoot}/../1bdd/src/bdd.os",
+                 "1bdd",
                 "gen",
                 "${file}",
                 "-out", 
