@@ -15,3 +15,4 @@
 		.ВключитьФайл("config-example.xml")
 		.ВключитьФайл("readme.md")
 		.ИсполняемыйФайл("src/gitsync.os", "gitsync");
+        
