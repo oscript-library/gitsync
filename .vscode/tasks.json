@@ -42,7 +42,7 @@
             "isBuildCommand": false
         },
         {
-            "taskName": "OneScript: run",
+            "taskName": "OneScript: run",            
             "args": [
                 "${file}"
             ],
