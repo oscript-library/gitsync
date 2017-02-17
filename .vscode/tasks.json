@@ -2,7 +2,7 @@
     "version": "0.1.0",
     "windows": {
         "command": "cmd",
-        "args": ["/c"]
+        "args": ["/c", "chcp 65001 >nul &"]
     },
     "linux": {
         "command": "sh",
