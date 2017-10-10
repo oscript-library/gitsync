@@ -1,8 +1,9 @@
 {
-    "version": "0.1.0",
+    "version": "2.0.0",
+    "_runner": "terminal",
     "windows": {
         "command": "cmd",
-        "args": ["/c", "chcp 65001 >nul &"]
+        "args": ["/c", "chcp 65001 ;"]
     },
     "linux": {
         "command": "sh",
@@ -11,6 +12,28 @@
     "isShellCommand": true,
     "showOutput": "silent",
     "tasks": [
+        {
+            "taskName": "Testing project (opm test)",
+            "args": [
+                // "oscript",
+                // "src/opm.os",
+                "opm",
+                "test"
+            ],
+            // "echoCommand": true,
+            // "showOutput": "always",
+            "suppressTaskName": true,
+            // "isTestCommand": false,
+            "problemMatcher": {
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "{Модуль\\s+(.+)\\s\\/\\s.*:\\s+(\\d+)\\s+\\/\\s+([^{]*)",
+                    "file": 1,
+                    "location": 2,
+                    "message": 3
+                }
+            }
+        },
         {
             "taskName": "Testing project",
             "args": [
