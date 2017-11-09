@@ -6,3 +6,4 @@ exec\.log
 bdd-log\.xml
 
 *.ospx
+oscript_modules/
