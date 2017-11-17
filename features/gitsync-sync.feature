@@ -53,6 +53,7 @@
     |-useVendorUnload|
     |-check-authors|
     |-auto-set-tags|
+    |-process-fatform-modules|
     И Я добавляю параметр "-push-every-n-commits 5" для команды "gitsync" 
     Когда Я выполняю команду "gitsync"
     Тогда Вывод команды "gitsync" содержит "ИНФОРМАЦИЯ - Синхронизация завершена"
