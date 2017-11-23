@@ -1,0 +1,42 @@
+﻿{ 
+	"gitsync-options":
+		{
+			"global": 
+				{
+				"email-domain": "server.com",
+				"v8-version": "1cv8.exe",
+				"git-executable": "git"
+				},
+			"repositories" : [
+				{
+					"name" : "test",
+					"git-local-path": "путь1",
+					"git-remote": "адрес1",
+					"v8-storage-dir": "каталог1",
+					"process-fatform-modules": "on", 
+					"push-every-n-commits": 5,
+					"auto-set-tags": "on", 
+					"stop-if-empty-comment": "on", 
+					"check-authors": "on" 
+					//"email-domain",
+					//"v8-version",
+					//"git-executable",
+				}, 
+				{
+					"name" : "test2",
+					"git-local-path": "путь2",
+					"git-remote": "адрес2",
+					"v8-storage-dir": "каталог2",
+					"process-fatform-modules": "on", 
+					"push-every-n-commits": 5,
+					"auto-set-tags": "on", 
+					"stop-if-empty-comment": "on", 
+					"check-authors": "on" 
+					//"email-domain",
+					//"v8-version",
+					//"git-executable",
+					
+				}
+			]
+	}
+}
