@@ -3,9 +3,8 @@
 		{
 			"global": 
 				{
-				"email-domain": "server.com",
-				"v8-version": "1cv8.exe",
-				"git-executable": "git",
+				"-email": "server.com",
+				"-v8version": "1cv8.exe",
 				"-plugins":
 					[
 						"pull",
