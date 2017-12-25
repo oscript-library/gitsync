@@ -24,4 +24,4 @@
 		.ВключитьФайл("config-example.xml")
 		.ВключитьФайл("config-example.json")
 		.ВключитьФайл("readme.md")
-		.ИсполняемыйФайл("src/gitsync.os");
+		.ИсполняемыйФайл("src/cmd/gitsync.os");
