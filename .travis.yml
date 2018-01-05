@@ -15,7 +15,7 @@ before_install:
   - echo "deb http://download.mono-project.com/repo/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/mono-official.list
   - sudo apt-get update
   - sudo apt-get install mono-complete mono-devel
-  - wget -O os.deb http://oscript.io/downloads/latest/onescript-engine_1.0.18_all.deb
+  - wget -O os.deb http://oscript.io/downloads/1_0_18/onescript-engine_1.0.18_all.deb
   - sudo dpkg -i *.deb; sudo apt install -f
   - sudo oscript /usr/share/oscript/lib/opm/src/opm.os install opm
 
