@@ -5,11 +5,14 @@
 [![GitHub release](https://img.shields.io/github/release/oscript-library/gitsync.svg)](https://github.com/oscript-library/gitsync/releases)
 
 ## Введение
-Проект является глубоким рефакторингом утилиты v83unpack ([https://github.com/xDrivenDevelopment/v83unpack](https://github.com/xDrivenDevelopment/v83unpack)).
 
-Изначально данный механизм представляет собой внешнюю обработку 1С:Предприятия, которая впоследствии была портирована на OneScript. [Исходные коды порта](https://github.com/xDrivenDevelopment/v83unpack/tree/develop/src/oscript) доступны в том же репозитории v83unpack.
+> Возможно данный проект примут в gitsync
+
+Проект является форком проекта gitsync ([https://github.com/oscript-library/gitsync](https://github.com/oscript-library/gitsync).
 
 Приложение *gitsync* представляет собой отдельное (standalone) приложение на 1Script, и предназначено для синхронизации хранилища конфигураций 1С с репозитарием git.
+
+Проект разработан на основании библиотеки [cli](https://github.com/khorevaa/cli)
 
 ## Установка
 
