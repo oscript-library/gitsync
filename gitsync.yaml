@@ -1,7 +1,0 @@
-env:
-    - 
-        STORAGE_PATH: GITSYNC_STORAGE_PATH
-    - 
-        WORK_DIR: GITSYNC_WORK_DIR
-    - 
-        storage: storage
