@@ -1,6 +1,6 @@
 sudo: required
 
-dist: trusty
+dist: harmit/ci-image
 
 notifications:
   email: false
@@ -11,18 +11,11 @@ before_install:
       sh -e /etc/init.d/xvfb start;
       sleep 3;
     fi
-  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-  - echo "deb http://download.mono-project.com/repo/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/mono-official.list
-  - sudo apt-get update
-  - sudo apt-get install mono-complete mono-devel
-  - wget -O os.deb http://oscript.io/downloads/1_0_18/onescript-engine_1.0.18_all.deb
-  - sudo dpkg -i *.deb; sudo apt install -f
-  - sudo oscript /usr/share/oscript/lib/opm/src/opm.os install opm
 
 install: 
-  - sudo oscript /usr/share/oscript/lib/opm/src/opm.os install 1testrunner
-  - sudo oscript /usr/share/oscript/lib/opm/src/opm.os install 1bdd
-  - sudo oscript /usr/share/oscript/lib/opm/src/opm.os install
+  - sudo opm install 1testrunner
+  - sudo opm install 1bdd
+  - sudo opm install
 
 env:
   global:
@@ -34,12 +27,12 @@ cache:
     - '$HOME/.sonar/cache'
 jobs:
   include:
-    #- stage: Тестирование 
-      #script: oscript /usr/share/oscript/lib/opm/src/opm.os test
+    - stage: Тестирование 
+      script: opm test
     - stage: Сборка и публикация github & hub.oscript.io
       script: skip 
       before_deploy:
-        - oscript /usr/share/oscript/lib/opm/src/opm.os build ./
+        - opm build ./
       deploy:
         - provider: releases
           api_key: "$GITHUB_OAUTH_TOKEN"
@@ -51,12 +44,12 @@ jobs:
             tags: true
         - provider: script
           skip_cleanup: true
-          script: oscript /usr/share/oscript/lib/opm/src/opm.os push --token $GITHUB_OAUTH_TOKEN --channel dev --file ./gitsync-*.ospx;
+          script: opm push --token $GITHUB_OAUTH_TOKEN --channel dev --file ./gitsync-*.ospx;
           on:
             branch: develop
         - provider: script
           skip_cleanup: true
-          script: oscript /usr/share/oscript/lib/opm/src/opm.os push --token $GITHUB_OAUTH_TOKEN --channel stable --file ./gitsync-*.ospx;
+          script: opm push --token $GITHUB_OAUTH_TOKEN --channel stable --file ./gitsync-*.ospx;
           on:
             branch: master
             tags: true
