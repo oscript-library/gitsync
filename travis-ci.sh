@@ -12,9 +12,10 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     if [ ! test $(wine --version) ]; then
 
     echo "Устанавливаю Wine"
+    add-apt-repository ppa:ubuntu-wine/ppa
     apt-get update
-    linux32 apt-get install -y -qq --no-install-recommends wine
-
+    apt-get install wine1.8 winetricks
+   
     fi
 fi
 
