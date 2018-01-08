@@ -7,9 +7,13 @@ services:
   - docker
 
 before_install:
-  - docker pull harmit/ci-image
+    - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c \"zcat {file} | docker load\"; fi
 
-install: true
+before_cache: 
+    - mkdir -p $HOME/docker && docker images -a --filter='dangling=false' --format '{{.Repository}}:{{.Tag}} {{.ID}}' | xargs -n 2 -t sh -c 'test -e $HOME/docker/$1.tar.gz || docker save $0 | gzip -2 > $HOME/docker/$1.tar.gz'\n
+
+install: 
+    - docker pull harmit/ci-image
 
 env:
   global:
@@ -19,6 +23,7 @@ cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.sonar/cache'
+    - '$HOME/docker'
 jobs:
   include:
     - stage: Тестирование 
@@ -26,6 +31,9 @@ jobs:
       - docker version
       - docker run -it -v $(pwd):/work_dir harmit/ci-image sh -c 'cd /work_dir; sudo /work_dir/travis-ci.sh; exit' | tee /tmp/test.log
       - grep -q ^PASS /tmp/test.log && ! grep -q ^FAIL /tmp/test.log
+      after_success:
+      - bash <(curl -s https://codecov.io/bash)
+
     - stage: Сборка и публикация github & hub.oscript.io
       script: skip 
       before_deploy:
