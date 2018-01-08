@@ -8,6 +8,7 @@ git config --global user.email $GITEMAIL
 
 # if [ $TRAVIS_OS_NAME = "linux" ]; then 
     echo "Устанавливаю Wine"
+    apt-get update
     linux32 apt-get install -y -qq --no-install-recommends wine
 # fi
 

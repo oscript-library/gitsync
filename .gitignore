@@ -1,4 +1,4 @@
-
+bin\*
 tests\.xml
 
 exec\.log
