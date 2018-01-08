@@ -6,11 +6,17 @@ GITEMAIL="${GIT_EMAIL:-"ci@me"}"
 git config --global user.name $GITNAME
 git config --global user.email $GITEMAIL
 
-# if [ $TRAVIS_OS_NAME = "linux" ]; then 
+
+
+if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
+    if [ ! test $(wine --version) ]; then
+
     echo "Устанавливаю Wine"
     apt-get update
     linux32 apt-get install -y -qq --no-install-recommends wine
-# fi
+
+    fi
+fi
 
 opm install; 
 opm install 1testrunner; 
