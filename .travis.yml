@@ -24,7 +24,7 @@ jobs:
     - stage: Тестирование 
       script:  
       - docker version
-      - docker run -it -v $(pwd):/work_dir harmit/ci-image sh -c 'cd /work_dir; exec travis-ci.sh; exit' | tee /tmp/test.log
+      - docker run -it -v $(pwd):/work_dir harmit/ci-image sh -c 'cd /work_dir; exec /work_dir/travis-ci.sh; exit' | tee /tmp/test.log
       - grep -q ^PASS /tmp/test.log && ! grep -q ^FAIL /tmp/test.log
     - stage: Сборка и публикация github & hub.oscript.io
       script: skip 
