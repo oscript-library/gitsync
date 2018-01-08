@@ -1,21 +1,15 @@
 sudo: required
 
-from: harmit/ci-image
-
 notifications:
   email: false
   
-before_install: 
-  - if [ $TRAVIS_OS_NAME == "linux" ]; then 
-      export CXX="g++-4.9" CC="gcc-4.9" DISPLAY=:99.0;
-      sh -e /etc/init.d/xvfb start;
-      sleep 3;
-    fi
+services:
+  - docker
 
-install: 
-  - sudo opm install 1testrunner
-  - sudo opm install 1bdd
-  - sudo opm install
+before_install:
+  - docker pull harmit/ci-image
+
+install: true
 
 env:
   global:
@@ -28,11 +22,14 @@ cache:
 jobs:
   include:
     - stage: Тестирование 
-      script: opm test
+      script:  
+      - docker version
+      - docker run -it -v $(pwd):/work harmit/ci-image -c 'cd /work; opm install; opm install 1testrunner; sudo opm install 1bdd; opm test' | tee /tmp/test.log
+      - grep -q ^PASS /tmp/test.log && ! grep -q ^FAIL /tmp/test.log
     - stage: Сборка и публикация github & hub.oscript.io
       script: skip 
       before_deploy:
-        - opm build ./
+        - opm build -mf build_packgedef ./
       deploy:
         - provider: releases
           api_key: "$GITHUB_OAUTH_TOKEN"
