@@ -33,7 +33,7 @@ jobs:
     - stage: Тестирование 
       script:  
       - docker version
-      - docker run -it -v $(pwd):/work_dir harmit/ci-image sh -c 'cd /work_dir; sudo /work_dir/travis-ci.sh; exit' | tee /tmp/test.log
+      - docker run -it -v $(pwd):/work_dir harmit/ci-image sh -c 'cd /work_dir; sh /work_dir/travis-ci.sh; exit' | tee /tmp/test.log
       - grep -q ^PASS /tmp/test.log && ! grep -q ^FAIL /tmp/test.log
       after_success:
       - bash <(curl -s https://codecov.io/bash)
