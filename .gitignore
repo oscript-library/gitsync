@@ -9,3 +9,4 @@ bdd-log\.xml
 
 *.ospx
 oscript_modules/
+src/cmd/oscript.cfg
