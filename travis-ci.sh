@@ -6,8 +6,8 @@ GITEMAIL="${GIT_EMAIL:-"ci@me"}"
 git config --global user.name $GITNAME
 git config --global user.email $GITEMAIL
 
-if [ $TRAVIS_OS_NAME == "linux" ]; then 
-    export CXX="g++-4.9" CC="gcc-4.9" DISPLAY=:99.0;
+if [[ $TRAVIS_OS_NAME = "linux" ]]; then 
+    echo "Устанавливаю Wine"
     linux32 apt-get install -y -qq --no-install-recommends wine
 fi
 
