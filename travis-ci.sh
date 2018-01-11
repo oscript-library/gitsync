@@ -8,7 +8,7 @@ git config --global user.email $GITEMAIL
 
 
 
-if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
+# if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
     # if [ ! test $(wine --version) ]; then
 
     echo "Устанавливаю Wine"
@@ -17,7 +17,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     apt-get install wine1.8 winetricks
    
     # fi
-fi
+# fi
 
 opm install; 
 opm install 1testrunner; 
