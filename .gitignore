@@ -11,6 +11,6 @@ bdd-log\.xml
 oscript_modules/
 src/cmd/oscript.cfg
 
-/installed_plugins/**/*
-!/installed_plugins/lib.config
-!/installed_plugins/package-loader.os
+/plugins/**/*
+!/plugins/lib.config
+!/plugins/package-loader.os
