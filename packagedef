@@ -16,6 +16,7 @@
 		.ВключитьФайл("src")
 		.ВключитьФайл("docs")
 		.ВключитьФайл("oscript_modules")
+		.ВключитьФайл("installed_plugins")
 		//.ВключитьФайл("features")
 		.ВключитьФайл("bin")
 		//.ВключитьФайл("config-example.xml")
