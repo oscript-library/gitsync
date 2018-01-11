@@ -17,7 +17,7 @@ rm os.deb
     echo "Устанавливаю Wine"
     # add-apt-repository ppa:ubuntu-wine/ppa
     apt-get update
-    apt-get install -ywine winetricks
+    apt-get install -y wine winetricks
    
     # fi
 # fi
