@@ -10,3 +10,7 @@ bdd-log\.xml
 *.ospx
 oscript_modules/
 src/cmd/oscript.cfg
+
+/installed_plugins/**/*
+!/installed_plugins/lib.config
+!/installed_plugins/package-loader.os
