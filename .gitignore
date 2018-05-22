@@ -6,11 +6,8 @@ exec\.log
 bdd-log\.xml
 
 .enabled-plugins
+coverage/*
 
 *.ospx
 oscript_modules/
 src/cmd/oscript.cfg
-
-/plugins/**/*
-!/plugins/lib.config
-!/plugins/package-loader.os
