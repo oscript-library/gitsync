@@ -1,13 +1,14 @@
-bin\*
-tests\.xml
+bin/*.exe
+tests/*.xml
 
-exec\.log
+exec/*.log
 
-bdd-log\.xml
+bdd-*.xml
 
 .enabled-plugins
 coverage/*
 
 *.ospx
 oscript_modules/
+embedded_plugins/*
 src/cmd/oscript.cfg
