@@ -19,6 +19,7 @@ opm install 1bdd;
 opm install coverage; 
 
 opm install; 
+opm run install-opm;
 
 echo "Запуск тестирования пакета"
 opm run coverage; 
