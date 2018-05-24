@@ -3,29 +3,21 @@
 GITNAME="${GIT_NAME:-"ci"}"
 GITEMAIL="${GIT_EMAIL:-"ci@me"}"
 
+set -e
+
 git config --global user.name $GITNAME
 git config --global user.email $GITEMAIL
 
+echo "Устанавливаю версию OScript <$OSCRIPT_VERSION>"
+curl http://oscript.io/downloads/$OSCRIPT_VERSION/deb > oscript.deb 
+dpkg -i oscript.deb 
+rm -f oscript.deb
 
-wget -O os.deb http://oscript.io/downloads/1_0_19/onescript-engine_1.0.19_all.deb
-sudo dpkg -i *.deb; sudo apt install -f
-
-rm os.deb
-# if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
-    # if [ ! test $(wine --version) ]; then
-
-    echo "Устанавливаю Wine"
-    # add-apt-repository ppa:ubuntu-wine/ppa
-    apt-get update
-    apt-get install -y wine winetricks
-   
-    # fi
-# fi
-
-
+echo "Установка зависимостей"
 opm install 1testrunner; 
 opm install 1bdd; 
 
 opm install; 
 
-opm test; 
+echo "Запуск тестирования пакета"
+opm run coverage; 
