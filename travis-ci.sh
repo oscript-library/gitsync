@@ -20,7 +20,7 @@ opm install coverage;
 opm update opm 
 
 opm install; 
-opm run install-opm;
+opm run install-opm-global;
 
 echo "Запуск тестирования пакета"
 opm run coverage; 
