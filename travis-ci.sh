@@ -22,5 +22,7 @@ opm update opm
 opm install; 
 opm run install-opm-global;
 
+cat /usr/bin/opm
+
 echo "Запуск тестирования пакета"
-opm run coverage; 
+oscript ./tasks/coverage.os; 
