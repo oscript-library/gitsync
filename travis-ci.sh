@@ -16,7 +16,8 @@ rm -f oscript.deb
 echo "Установка зависимостей"
 opm install 1testrunner; 
 opm install 1bdd;
-opm install coverage; 
+opm install coverage;
+opm update opm 
 
 opm install; 
 opm run install-opm;
