@@ -117,6 +117,7 @@ init (синоним i) - инициализация нового хранили
     export GITSYNC_TEMP=./temp/sync
     gitsync i
     ```
+    
     windows:
     ```cmd
     set GITSYNC_WORKDIR=./work_dir/
