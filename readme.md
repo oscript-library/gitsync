@@ -21,7 +21,7 @@
 
 ### Вручную
 
-1. Скачать файл reflector*.ospx из раздела [releases](https://github.com/khorevaa/gitsync/releases)
+1. Скачать файл `gitsync*.ospx` из раздела [releases](https://github.com/khorevaa/gitsync/releases)
 2. Воспользоваться командой:
 
 ```
