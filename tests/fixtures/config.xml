@@ -1,4 +1,4 @@
-﻿<gitsync-options>
+﻿<gitsync3-options>
 	<global>
 		<email-domain>server.com</email-domain>
 		<v8-version>1cv8.exe</v8-version>
@@ -22,4 +22,4 @@
 			<git-executable/>
 		</repo>
 	</repositories>
-</gitsync-options>
+</gitsync3-options>

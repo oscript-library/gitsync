@@ -2,18 +2,18 @@
 
 Обсудить [![Join the chat at https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/EvilBeaver/oscript-library.svg)](https://gitter.im/EvilBeaver/oscript-library?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![GitHub release](https://img.shields.io/github/release/oscript-library/gitsync.svg)](https://github.com/oscript-library/gitsync/releases)
+[![GitHub release](https://img.shields.io/github/release/oscript-library/gitsync3.svg)](https://github.com/oscript-library/gitsync3/releases)
 
 ## Введение
 
-> Возможно данный проект примут в gitsync
+> Возможно данный проект примут в gitsync3
 
-Проект является форком проекта gitsync см. [https://github.com/oscript-library/gitsync](https://github.com/oscript-library/gitsync).
+Проект является форком проекта gitsync3 см. [https://github.com/oscript-library/gitsync3](https://github.com/oscript-library/gitsync3).
 
-Проект *gitsync* представляет собой:
+Проект *gitsync3* представляет собой:
 
-1. Библиотеку `gitsync` (`src/core`) - которая реализует основные классы для синхронизации хранилища 1С с git
-2. Приложение `gitsync` (`src/cmd`) - консольное приложение на основе библиотеки [`cli`](https://github/khorevaa/cli)
+1. Библиотеку `gitsync3` (`src/core`) - которая реализует основные классы для синхронизации хранилища 1С с git
+2. Приложение `gitsync3` (`src/cmd`) - консольное приложение на основе библиотеки [`cli`](https://github/khorevaa/cli)
 
 [Документация и описание публичного API библиотеки](docs/README.md)
 
@@ -21,7 +21,7 @@
 
 ### Вручную
 
-1. Скачать файл `gitsync*.ospx` из раздела [releases](https://github.com/khorevaa/gitsync/releases)
+1. Скачать файл `gitsync3*.ospx` из раздела [releases](https://github.com/khorevaa/gitsync3/releases)
 2. Воспользоваться командой:
 
 ```
@@ -30,12 +30,12 @@ $ opm install -f <ПутьКФайлу>
 
 ### Через пакетный менеджер opm
 
-1. командой `opm install gitsync`
-2. Запустить командой `gitsync`
+1. командой `opm install gitsync3`
+2. Запустить командой `gitsync3`
 
 ## Особенности
 
-### Отличия от `gitsync` версий 2.x
+### Отличия от `gitsync3` версий 2.x
 
 * Полностью другая строка вывоза приложения, а именно используется стандарт POSIX.
 * Работа с хранилищем конфигурации реализовано на основании библиотеки [`v8storage`](https://github.com/khorevaa/v8storage)
@@ -59,21 +59,21 @@ $ opm install -f <ПутьКФайлу>
 
 `gisync clone --storage-user Администратор --storage-pwd Секрет <путь_к_хранилищу_1С> <адрес_удаленного_репозитория> <рабочий_каталог>(необязательный)`
 
-Справка по команде `clone`: `gitsync clone --help`
+Справка по команде `clone`: `gitsync3 clone --help`
 
-Больше примеров можно увидеть, использовав команду `gitsync usage clone`
+Больше примеров можно увидеть, использовав команду `gitsync3 usage clone`
 
 2. Если у Вас нет удаленного репозитория, тогда стоит воспользоваться командой `init` для выполнения начальной настройки и наполнения данными рабочего каталог
 
 Пример использования: 
 
-`gitsync init --storage-user Администратор --storage-pwd Секрет C:/Хранилище_1С/ C:/GIT/src`
+`gitsync3 init --storage-user Администратор --storage-pwd Секрет C:/Хранилище_1С/ C:/GIT/src`
 
 Данная команда создаст новый репозиторий git в каталоге `C:/GIT/src` из хранилища 1С по пути `C:/Хранилище_1С/` и наполнил его служебными файлами `VERSION` и `AUTHORS`
 
-Справка по команде `init`: `gitsync init --help`
+Справка по команде `init`: `gitsync3 init --help`
 
-Больше примеров можно увидеть, использовав команду `gitsync usage init`
+Больше примеров можно увидеть, использовав команду `gitsync3 usage init`
 
 ### Установка соответствия пользователей
 
@@ -114,15 +114,15 @@ $ opm install -f <ПутьКФайлу>
 
 Пример использования:
 
-`gitsync set-version <номер_версии> <рабочий_каталог>(необязательный)`
+`gitsync3 set-version <номер_версии> <рабочий_каталог>(необязательный)`
 
 Данная команда установит указанную версию `<номер_версии>` в файл `VERSION`, который лежит в каталоге `<рабочий_каталог>`
 
-Справка по команде `set-version`: `gitsync set-version --help`
+Справка по команде `set-version`: `gitsync3 set-version --help`
 
 Для удобства использования команда `set-version` имеет короткое название `sv`.
 
-Больше примеров можно увидеть, использовав команду `gitsync usage set-version`
+Больше примеров можно увидеть, использовав команду `gitsync3 usage set-version`
 
 ## Настройка плагинов синхронизации
 
@@ -143,19 +143,19 @@ $ opm install -f <ПутьКФайлу>
 
 Пример использования:
 
-* `gitsync plugins enable limit` - будет активирован плагин `limit`
-* `gitsync plugins list` - будет выведен список всех *активированных* плагинов
-* `gitsync plugins list -a` - будет выведен список всех *установленных* плагинов 
+* `gitsync3 plugins enable limit` - будет активирован плагин `limit`
+* `gitsync3 plugins list` - будет выведен список всех *активированных* плагинов
+* `gitsync3 plugins list -a` - будет выведен список всех *установленных* плагинов 
 
-Справка по команде `plugins`: `gitsync plugins --help`
+Справка по команде `plugins`: `gitsync3 plugins --help`
 
 Для удобства использования команда `plugins` имеет короткое название `p`.
 
-Больше примеров можно увидеть, использовав команду `gitsync usage plugins`
+Больше примеров можно увидеть, использовав команду `gitsync3 usage plugins`
 
 > Для храниения установленных плагинов и списка активных плагинов используется каталог `локальных данных приложения`
 
-Для инициализации предустановленных плагинов необходимо выполнить команду `gitsync plugins init`
+Для инициализации предустановленных плагинов необходимо выполнить команду `gitsync3 plugins init`
 
 Списко предустановленных плагинов:
 
@@ -174,7 +174,7 @@ $ opm install -f <ПутьКФайлу>
 
 Команда `sync` (синоним s) - выполняет синхронизацию хранилища 1С с git-репозиторием
 
-> Подробную справку по параметрам см. `gitsync sync --help`
+> Подробную справку по параметрам см. `gitsync3 sync --help`
 
 ### Справка по использованию команды:
 
@@ -182,7 +182,7 @@ $ opm install -f <ПутьКФайлу>
 Команда: sync, s
  Выполняет синхронизацию хранилища 1С с git-репозиторием
 
-Строка запуска: gitsync sync [OPTIONS] PATH [WORKDIR]
+Строка запуска: gitsync3 sync [OPTIONS] PATH [WORKDIR]
 
 Аргументы:
   PATH          Путь к хранилищу конфигурации 1С. (env $GITSYNC_STORAGE_PATH)
@@ -222,7 +222,7 @@ $ opm install -f <ПутьКФайлу>
 
 * Простое использование
 
-    `gitsync sync C:/Хранилище_1С/ C:/GIT/src`
+    `gitsync3 sync C:/Хранилище_1С/ C:/GIT/src`
 
     Данная команда выполнить синхронизацию хранилища 1С по пути `C:/Хранилище_1С/` и репозитория git в каталоге `C:/GIT/src`
 
@@ -232,14 +232,14 @@ $ opm install -f <ПутьКФайлу>
 
     ```shell
     cd C:/work_dir/
-    gitsync sync C:/Хранилище_1С/
+    gitsync3 sync C:/Хранилище_1С/
     ```
     Данная команда выполнить синхронизацию хранилища 1С по пути `C:/Хранилище_1С/` и репозитория git в каталоге `C:/work_dir`
 
 * Инициализация в с указанием пользователя и пароля.
 
     ```shell
-    gitsync sync --storage-user Admin --storage-pwd=Secret C:/Хранилище_1С/ C:/work_dir/
+    gitsync3 sync --storage-user Admin --storage-pwd=Secret C:/Хранилище_1С/ C:/work_dir/
     ```
     Данная команда выполнить синхронизацию хранилища 1С по пути `C:/Хранилище_1С/` и репозитория git в каталоге `C:/work_dir`
     Используя для подключения к хранилищу 1С пользователя `Admin` и пароль `Secret`
@@ -247,7 +247,7 @@ $ opm install -f <ПутьКФайлу>
 * Использование синонимов (короткая версия предыдущего примера)
 
     ```shell
-    gitsync s -uAdmin -p=Secret C:/Хранилище_1С/ C:/work_dir/
+    gitsync3 s -uAdmin -p=Secret C:/Хранилище_1С/ C:/work_dir/
     ```
     Данная команда выполнить синхронизацию хранилища 1С по пути `C:/Хранилище_1С/` и репозитория git в каталоге `C:/work_dir`
     Используя для подключения к хранилищу 1С пользователя `Admin` и пароль `Secret`
@@ -264,7 +264,7 @@ $ opm install -f <ПутьКФайлу>
     export GITSYNC_V8VERSION=8.3.7
     export GITSYNC_VERSOBE=true #Можно использовать Да/Ложь/Нет/Истина
     export GITSYNC_TEMP=./temp/sync
-    gitsync s
+    gitsync3 s
     ```
     windows:
     ```cmd
@@ -277,7 +277,7 @@ $ opm install -f <ПутьКФайлу>
     set GITSYNC_VERSOBE=true #Можно использовать Да/Ложь/Нет/Истина
     set GITSYNC_TEMP=./temp/sync
 
-    gitsync s
+    gitsync3 s
     ```
     Данная команда выполнить синхронизацию хранилища 1С по пути `C:/Хранилище_1С/` и репозитория git в каталоге `C:/work_dir`
     Используя для подключения к хранилищу 1С пользователя `Admin` и пароль `Secret`

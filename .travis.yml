@@ -26,7 +26,7 @@ env:
   - GIT_EMAIL=ci@mail
   - GIT_NAME=ci
   - CHANNEL=dev
-  - PACKAGE_NAME=gitsync
+  - PACKAGE_NAME=gitsync3
   matrix:
   - OSCRIPT_VERSION=1_0_20
   - OSCRIPT_VERSION=night-build

@@ -262,7 +262,7 @@
 КонецФункции
 
 Функция ИмяЛога() Экспорт
-	Возврат "oscript.lib.gitsync.test_plugin";
+	Возврат "oscript.lib.gitsync3.test_plugin";
 КонецФункции
 
 Функция Приоритет() Экспорт

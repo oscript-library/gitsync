@@ -50,7 +50,7 @@
 
 Процедура ПолезнаяРабота()
 
-	URLРепозитория = "https://github.com/khorevaa/gitsync_plugins.git";
+	URLРепозитория = "https://github.com/khorevaa/gitsync3_plugins.git";
 	КаталогСборки = ВременныеФайлы.СоздатьКаталог();
 	Ветка = "develop";
 

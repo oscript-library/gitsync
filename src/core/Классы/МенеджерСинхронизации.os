@@ -1084,7 +1084,7 @@
 
 Функция ИмяЛога()
 
-	Возврат "oscript.lib.gitsync";
+	Возврат "oscript.lib.gitsync3";
 
 КонецФункции
 
