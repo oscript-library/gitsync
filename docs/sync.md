@@ -2,20 +2,20 @@
 
 sync (синоним s) - Выполняет синхронизацию хранилища 1С с git-репозиторием
 
-> Подробную справку по параметрам см. gitsync3 sync --help
+> Подробную справку по опциям и аргументам см. `gitsync3 sync --help`
 
 ### Справка по использованию команды:
 ```
 Команда: sync, s
  Выполняет синхронизацию хранилища 1С с git-репозиторием
 
-Строка запуска: gitsync3 sync [OPTIONS] PATH [WORKDIR]
+Строка запуска: gitsync3 sync [ОПЦИИ] PATH [WORKDIR]
 
 Аргументы:
   PATH          Путь к хранилищу конфигурации 1С. (env $GITSYNC_STORAGE_PATH)
   WORKDIR       Каталог исходников внутри локальной копии git-репозитария. (env $GITSYNC_WORKDIR)
 
-Параметры:
+Опции:
   -u, --storage-user    пользователь хранилища конфигурации (env $GITSYNC_STORAGE_USER) (по умолчанию Администратор)
   -p, --storage-pwd     пароль пользователя хранилища конфигурации (env $GITSYNC_STORAGE_PASSWORD, $GITSYNC_STORAGE_PWD)
 
