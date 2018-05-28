@@ -10,5 +10,5 @@ coverage/*
 
 *.ospx
 oscript_modules/
-embedded_plugins/*
+embedded_plugins/*.ospx
 src/cmd/oscript.cfg
