@@ -816,7 +816,7 @@
 		ИндексПодписчиков = ВходящийИндексПодписчиков;
 	КонецЕсли;
 
-	Лог = Логирование.ПолучитьЛог("oscript.app.gitsync3.plugins.event-subscriptions");
+	Лог = Логирование.ПолучитьЛог("oscript.app.gitsync.plugins.event-subscriptions");
 
 КонецПроцедуры
 

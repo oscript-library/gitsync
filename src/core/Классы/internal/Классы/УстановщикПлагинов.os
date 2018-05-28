@@ -81,4 +81,4 @@
 
 #КонецОбласти
 
-Лог = Логирование.ПолучитьЛог("oscript.lib.gitsync3.plugins.installer");
+Лог = Логирование.ПолучитьЛог("oscript.lib.gitsync.plugins.installer");
