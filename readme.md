@@ -105,7 +105,7 @@ $ opm install -f <ПутьКФайлу>
 
 Пример использования:
 
-`gisync clone --storage-user Администратор --storage-pwd Секрет <путь_к_хранилищу_1С> <адрес_удаленного_репозитория> <рабочий_каталог>(необязательный)`
+`gitsync clone --storage-user Администратор --storage-pwd Секрет <путь_к_хранилищу_1С> <адрес_удаленного_репозитория> <рабочий_каталог>(необязательный)`
 
 Справка по команде `clone`: `gitsync clone --help`
 
@@ -115,9 +115,13 @@ $ opm install -f <ПутьКФайлу>
 
 Пример использования:
 
-`gitsync init --storage-user Администратор --storage-pwd Секрет C:/Хранилище_1С/ C:/GIT/src`
+* `gitsync init --storage-user Администратор --storage-pwd Секрет C:/Хранилище_1С/ C:/GIT/src`
 
-Данная команда создаст новый репозиторий git в каталоге `C:/GIT/src` из хранилища 1С по пути `C:/Хранилище_1С/` и наполнил его служебными файлами `VERSION` и `AUTHORS`
+    Данная команда создаст новый репозиторий git в каталоге `C:/GIT/src` из хранилища 1С по пути `C:/Хранилище_1С/` и наполнил его служебными файлами `VERSION` и `AUTHORS`
+
+* `gitsync init --storage-user Администратор --storage-pwd Секрет http:/www.storages.1c.com/repository.1ccr/ИмяХранилища C:/GIT/src`
+
+    Тоже самое только для `http` хранилищем по адресу `http:/www.storages.1c.com/repository.1ccr/ИмяХранилища`
 
 Справка по команде `init`: `gitsync init --help`
 
