@@ -24,7 +24,7 @@ echo "==================================="
 echo "Установка opm из develop"
 opm run install-opm-global;
 
-cat /usr/bin/opm
+# cat /usr/bin/opm
 echo "==================================="
 
 echo "Запуск тестирования пакета"
