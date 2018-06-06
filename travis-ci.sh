@@ -17,12 +17,8 @@ echo "Установка зависимостей тестирования"
 opm install 1testrunner; 
 opm install 1bdd;
 opm install coverage;
-opm update opm 
 
 opm install; 
-echo "==================================="
-echo "Установка opm из develop"
-opm run install-opm-global;
 
 # cat /usr/bin/opm
 echo "==================================="
