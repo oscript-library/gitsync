@@ -23,11 +23,11 @@ pipeline {
                     }
                     else
                         echo 'no testing task'
-						
-					def scannerHome = tool 'sonar-scanner';
-					withSonarQubeEnv('silverbulleters') {
-						sh "${scannerHome}/bin/sonar-scanner"
-					}
+                        
+                    def scannerHome = tool 'sonar-scanner';
+                    withSonarQubeEnv('silverbulleters') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
                 
             }
