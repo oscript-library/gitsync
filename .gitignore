@@ -7,3 +7,4 @@ bdd-log\.xml
 
 *.ospx
 oscript_modules/
+.scannerwork/
