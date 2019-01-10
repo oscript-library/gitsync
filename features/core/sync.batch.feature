@@ -46,7 +46,7 @@ globals:
     push: true
     pull: true
 repositories:
-  - name: <ТестовыйРепозиторий>
+  - name: ТестовыйРепозиторий
     # disable: false
     path: <КаталогХранилища1С_1>
     dir: <ПутьКаталогаИсходников_1>		
@@ -57,7 +57,7 @@ repositories:
       git-url: git-url
       push: true
       pull: true
-  - name: <ТестовыйРепозиторий2>
+  - name: ТестовыйРепозиторий2
     # disable: true
     path: <КаталогХранилища1С_2>
     dir: <ПутьКаталогаИсходников_2>		
