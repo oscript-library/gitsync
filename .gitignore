@@ -17,6 +17,6 @@ src/cmd/oscript.cfg
 *.cfl
 *.1CL
 1cv8dtmp.1CD
-tests/fixtures/extension_storage/data/
-tests/fixtures/extension_storage/cache/
-tests/fixtures/extension_storage/ver
+# tests/fixtures/extension_storage/data/
+# tests/fixtures/extension_storage/cache/
+# tests/fixtures/extension_storage/ver
