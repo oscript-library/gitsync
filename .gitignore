@@ -13,3 +13,11 @@ bin/*
 oscript_modules/
 embedded_plugins/*.ospx
 src/cmd/oscript.cfg
+
+*.1CD.
+*.cfl
+*.1CL
+1cv8dtmp.1CD
+tests/fixtures/extension_storage/data/
+tests/fixtures/extension_storage/cache/
+tests/fixtures/extension_storage/ver
