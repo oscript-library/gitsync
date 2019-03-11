@@ -264,6 +264,7 @@
 		.ПолеСтрока("Наименование storage-name name")
 		.ПолеСтрока("ПутьКХранилищу storage-path path")
 		.ПолеСтрока("ПутьКРабочемуКаталогу work-dir git-local-path dir")
+		.ПолеСтрока("ИмяРасширения extention")
 		// Стандартные поля
 		.ПолеСтрока("ПользовательХранилища storage-user user")
 		.ПолеСтрока("ПарольПользователяХранилища storage-pwd storage-password password pass")
