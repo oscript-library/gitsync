@@ -7,7 +7,6 @@ bdd-*.xml
 
 .enabled-plugins
 coverage/*
-bin/*
 
 *.ospx
 oscript_modules/
