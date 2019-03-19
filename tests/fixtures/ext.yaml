@@ -1,0 +1,11 @@
+    name: Расширение1
+    extention: test
+    path: <КаталогХранилищаРасширения>
+    dir: <ПутьКаталогаИсходниковРасширения>
+    storage-user: Администратор
+    storage-pwd: ''
+    git-path: git
+    temp-dir: ""
+    v8version: 8.3
+    domain-email: localhost
+    lic-try-count: 5
