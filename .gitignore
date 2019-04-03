@@ -10,6 +10,7 @@ coverage/*
 
 *.ospx
 oscript_modules/
+tests/fixtures/gitsync-plugins/*
 embedded_plugins/*.ospx
 src/cmd/oscript.cfg
 
