@@ -13,7 +13,7 @@ sync (синоним s) - Выполняет синхронизацию хран
 
 Аргументы:
   PATH          Путь к хранилищу конфигурации 1С. (env $GITSYNC_STORAGE_PATH)
-  WORKDIR       Каталог исходников внутри локальной копии git-репозитария. (env $GITSYNC_WORKDIR)
+  WORKDIR       Каталог исходников внутри локальной копии git-репозитория. (env $GITSYNC_WORKDIR)
 
 Опции:
   -u, --storage-user    пользователь хранилища конфигурации (env $GITSYNC_STORAGE_USER) (по умолчанию Администратор)
@@ -24,7 +24,7 @@ sync (синоним s) - Выполняет синхронизацию хран
 | Имя                 | Описание                                               |
 |---------------------|--------------------------------------------------------|
 | `GITSYNC_V8VERSION` | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.) |
-| `GITSYNC_VERSOBE`   | вывод отладочной информация в процессе выполнении      |
+| `GITSYNC_VERBOSE`   | вывод отладочной информации в процессе выполнения      |
 | `GITSYNC_TEMP`      | путь к каталогу временных файлов                       |
 | `GITSYNC_EMAIL`     | домен почты для пользователей git                      |
 
@@ -88,7 +88,7 @@ sync (синоним s) - Выполняет синхронизацию хран
     export GITSYNC_STORAGE_USER=Admin
     export GITSYNC_STORAGE_PASSWORD=Secret
     export GITSYNC_V8VERSION=8.3.7
-    export GITSYNC_VERSOBE=true #Можно использовать Да/Ложь/Нет/Истина
+    export GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     export GITSYNC_TEMP=./temp/sync
     gitsync s
     ```
@@ -100,7 +100,7 @@ sync (синоним s) - Выполняет синхронизацию хран
     set GITSYNC_STORAGE_USER=Admin
     set GITSYNC_STORAGE_PASSWORD=Secret
     set GITSYNC_V8VERSION=8.3.7
-    set GITSYNC_VERSOBE=true #Можно использовать Да/Ложь/Нет/Истина
+    set GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     set GITSYNC_TEMP=./temp/sync
 
     gitsync s

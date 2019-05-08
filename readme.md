@@ -249,7 +249,7 @@ $ opm install -f <ПутьКФайлу>
 
 Аргументы:
   PATH          Путь к хранилищу конфигурации 1С. (env $GITSYNC_STORAGE_PATH)
-  WORKDIR       Каталог исходников внутри локальной копии git-репозитария. (env $GITSYNC_WORKDIR)
+  WORKDIR       Каталог исходников внутри локальной копии git-репозитория. (env $GITSYNC_WORKDIR)
 
 Опции:
   -u, --storage-user    пользователь хранилища конфигурации (env $GITSYNC_STORAGE_USER) (по умолчанию Администратор)
@@ -263,7 +263,7 @@ $ opm install -f <ПутьКФайлу>
 |---------------------|--------------------------------------------------------|
 | `GITSYNC_V8VERSION` | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.) |
 | `GITSYNC_V8_PATH`   | путь к исполняемому файлу платформы 1С (Например, /opt/1C/v8.3/x86_64/1cv8) |
-| `GITSYNC_VERSOBE`   | вывод отладочной информация в процессе выполнении      |
+| `GITSYNC_VERBOSE`   | вывод отладочной информации в процессе выполнения      |
 | `GITSYNC_TEMP`      | путь к каталогу временных файлов                       |
 | `GITSYNC_EMAIL`     | домен почты для пользователей git                      |
 
@@ -340,7 +340,7 @@ $ opm install -f <ПутьКФайлу>
     export GITSYNC_V8VERSION=8.3.7
     # Указание конкретного исполняемого файла платформы 1С
     #export GITSYNC_V8_PATH=/opt/1C/v8.3/x86_64/1cv8 # Надо обернуть в кавычки если путь содержит пробелы
-    export GITSYNC_VERSOBE=true #Можно использовать Да/Ложь/Нет/Истина
+    export GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     export GITSYNC_TEMP=./temp/sync
     gitsync s
     ```
@@ -354,7 +354,7 @@ $ opm install -f <ПутьКФайлу>
     set GITSYNC_V8VERSION=8.3.7
     # Указание конкретного исполняемого файла платформы 1С
     #set GITSYNC_V8_PATH="C:\Program Files (x86)\1cv8\8.3.12.1567\bin\1cv8.exe" # Надо обернуть в кавычки если путь содержит пробелы
-    set GITSYNC_VERSOBE=true #Можно использовать Да/Ложь/Нет/Истина
+    set GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     set GITSYNC_TEMP=./temp/sync
 
     gitsync s
@@ -375,7 +375,7 @@ $ opm install -f <ПутьКФайлу>
 Как разработать свой или доработать текущие плагины
 
 1. [Как создать свой плагин](./create-new-plugin.md)
-1. Доработка предустановленных плагинов производиться в отдельном репозитории [gitsync-plugins](https://github.com/khorevaa/gitsync-plugins)
+1. Доработка предустановленных плагинов производится в отдельном репозитории [gitsync-plugins](https://github.com/khorevaa/gitsync-plugins)
 
 
 <a id="markdown-механизм-подписок-на-события" name="механизм-подписок-на-события"></a>
