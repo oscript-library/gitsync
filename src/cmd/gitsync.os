@@ -30,11 +30,11 @@
 		
 	Приложение.Опция("U ib-user ib-usr db-user", "", "пользователь информационной базы")
 					.ТСтрока()
-					.ВОкружении("GITSYNC_IB_USR GITSYNC_IB_USER");
+					.ВОкружении("GITSYNC_IB_USR GITSYNC_IB_USER GITSYNC_DB_USER");
 
 	Приложение.Опция("P ib-pwd db-pwd", "", "пароль пользователя информационной базы")
 					.ТСтрока()
-					.ВОкружении("GITSYNC_IB_PASSWORD GITSYNC_IB_PWD");
+					.ВОкружении("GITSYNC_IB_PASSWORD GITSYNC_IB_PWD GITSYNC_DB_PSW");
 	
 	Приложение.Опция("C ib-connection ibconnection", "", "путь подключения к информационной базе")
 					.ТСтрока()
