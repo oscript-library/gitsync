@@ -1,42 +1,54 @@
-﻿{ 
-	"gitsync-options":
-		{
-			"global": 
-				{
-				"email-domain": "server.com",
-				"v8-version": "1cv8.exe",
-				"git-executable": "git"
-				},
-			"repositories" : [
-				{
-					"name" : "test",
-					"git-local-path": "путь1",
-					"git-remote": "адрес1",
-					"v8-storage-dir": "каталог1",
-					"process-fatform-modules": "on", 
-					"push-every-n-commits": 5,
-					"auto-set-tags": "on", 
-					"stop-if-empty-comment": "on", 
-					"check-authors": "on" 
-					//"email-domain",
-					//"v8-version",
-					//"git-executable",
-				}, 
-				{
-					"name" : "test2",
-					"git-local-path": "путь2",
-					"git-remote": "адрес2",
-					"v8-storage-dir": "каталог2",
-					"process-fatform-modules": "on", 
-					"push-every-n-commits": 5,
-					"auto-set-tags": "on", 
-					"stop-if-empty-comment": "on", 
-					"check-authors": "on" 
-					//"email-domain",
-					//"v8-version",
-					//"git-executable",
-					
-				}
-			]
-	}
+﻿{
+    "globals": {
+        "storage-user": "Администратор",
+        "storage-pwd": "",
+        "git-path": "git",
+        "temp-dir": "",
+        "v8version": 8.3,
+        "domain-email": "localhost",
+        "lic-try-count": 5,
+        "plugins": {
+            "enable": [
+                "test",
+                "test2"
+            ],
+            "disable": [
+                "test3"
+            ]
+        },
+        "plugins-config": {
+            "git-url": "git-url",
+            "push": true,
+            "pull": true
+        }
+    },
+    "repositories": [
+        {
+            "name": "<ТестовыйРепозиторий>",
+            "path": "<КаталогХранилища1С_1>",
+            "dir": "<ПутьКаталогаИсходников_1>",
+            "plugins": {
+                "more": [
+                    "test3"
+                ]
+            },
+            "plugins-config": {
+                "git-url": "git-url",
+                "push": true,
+                "pull": true
+            }
+        },
+        {
+            "name": "<ТестовыйРепозиторий2>",
+            "path": "<КаталогХранилища1С_2>",
+            "dir": "<ПутьКаталогаИсходников_2>",
+            "storage-user": "Администратор",
+            "storage-pwd": "",
+            "git-path": "git",
+            "temp-dir": "",
+            "v8version": 8.3,
+            "domain-email": "localhost",
+            "lic-try-count": 5
+        }
+    ]
 }

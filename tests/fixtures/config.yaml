@@ -1,0 +1,41 @@
+globals:
+    storage-user: Администратор
+    storage-pwd: ''
+    git-path: git
+    temp-dir: ''
+    v8version: 8.3
+    domain-email: localhost
+    lic-try-count: 5
+    plugins:
+        enable:
+            - test
+            - test2
+        disable:
+            - test3
+    plugins-config:
+        git-url: git-url
+        push: true
+        pull: true
+repositories:
+    - 
+        name: '<ТестовыйРепозиторий>'
+        path: '<КаталогХранилища1С_1>'
+        dir: '<ПутьКаталогаИсходников_1>'
+        plugins:
+            more:
+                - test3
+        plugins-config:
+            git-url: git-url
+            push: true
+            pull: true
+    - 
+        name: '<ТестовыйРепозиторий2>'
+        path: '<КаталогХранилища1С_2>'
+        dir: '<ПутьКаталогаИсходников_2>'
+        storage-user: Администратор
+        storage-pwd: ''
+        git-path: git
+        temp-dir: ''
+        v8version: 8.3
+        domain-email: localhost
+        lic-try-count: 5
