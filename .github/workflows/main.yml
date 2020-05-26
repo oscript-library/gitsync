@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: onec-linux
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Onescript Action
+      uses: otymko/setup-onescript@v1.0
+      with:
+        version: 1.4.0
+      
+    # Runs a single command using the runners shell
+    - name: Install dependencies
+      run: |
+        opm install -l
+        opm install 1bdd 1testrunner coverage
+
+    # Runs a set of commands using the runners shell
+    - name: Run tests
+      run: |
+        oscript ./tasks/coverage.os
