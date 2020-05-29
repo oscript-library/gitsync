@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Setup Onescript
-      run: ovm use --install dev
+      run: ovm use dev
       
     # Runs a single command using the runners shell
     - name: Install dependencies
