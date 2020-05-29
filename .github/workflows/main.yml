@@ -17,8 +17,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Install dependencies
       run: |
-        opm install -l
-        opm install 1bdd 1testrunner coverage
+        opm install -l \
+        && opm install 1bdd 1testrunner coverage
 
     # Runs a set of commands using the runners shell
     - name: Run tests
