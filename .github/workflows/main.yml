@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  GIT_EMAIL: ci@mail
+  GIT_NAME: ci
+
+jobs:
+  build:
+    runs-on: onec-linux
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Onescript
+      run: ovm use dev
+
+    - name: Config env
+      run: |
+        git config --global user.name $GIT_EMAIL
+        git config --global user.email $GIT_NAME
+    # Runs a single command using the runners shell
+    - name: Install dependencies
+      run: |
+        opm install -l
+        opm install -l 1bdd 1testrunner coverage
+
+    # Runs a set of commands using the runners shell
+    - name: Run tests
+      run: |
+        oscript ./tasks/coverage.os
+    
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.7
+      if: always()
+      with:
+        file: ./coverage/coverage.xml
