@@ -32,3 +32,9 @@ jobs:
     - name: Run tests
       run: |
         oscript ./tasks/coverage.os
+
+    - uses: ashley-taylor/junit-report-annotations-action@v1.1
+      if: always()
+      with:
+        access-token: ${{ secrets.GITHUB_TOKEN }}
+        path: bdd-log-*.xml
