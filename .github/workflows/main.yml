@@ -32,9 +32,9 @@ jobs:
     - name: Run tests
       run: |
         oscript ./tasks/coverage.os
-
-    - uses: ashley-taylor/junit-report-annotations-action@1.1
+    
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.7
       if: always()
       with:
-        access-token: ${{ secrets.GITHUB_TOKEN }}
-        path: bdd-log-*.xml
+        file: ./coverage/coverage.xml
