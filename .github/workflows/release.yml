@@ -1,0 +1,73 @@
+# MIT License
+# Copyright (C) 2020 Tymko Oleg <olegtymko@yandex.ru> and contributors
+# All rights reserved.
+
+name: Подготовка релиза и публикация в хабе
+# Только события создания и изменения релиза
+on:
+    release:
+        types: [published, edited]
+    pull_request:
+    push:
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        oscript_version: ['1.4.0']
+        package_mask: ["gitsync-*.ospx"]
+        package_exe_mask: ["gitsync.exe"]
+    steps:
+      # Загрузка проекта
+      - name: Актуализация
+        uses: actions/checkout@v2
+
+      # Установка OneScript конкретной версии
+      - name: Установка OneScript
+        uses: otymko/setup-onescript@v1.0
+        with:
+          version: ${{ matrix.oscript_version }}
+
+      # Установка зависимостей пакета
+      - name: Установка зависимостей
+        run: |
+          opm install opm
+          opm install
+
+      # - name: Сборка пакета
+      #   run: opm build
+
+      # - name: Заливка артифактов
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: package.zip
+      #     path: ./${{ matrix.package_mask }}
+
+      # - name: Заливка в релиз
+      #   uses: AButler/upload-release-assets@v1.0
+      #   with:
+      #     files: ./${{ matrix.package_mask }}
+      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Публикация в hub.oscript.io
+      #   shell: bash
+      #   run: opm push -f ./${{ matrix.package_mask }} --token ${{ env.TOKEN }} -c stable
+      #   env:
+      #     TOKEN: ${{ secrets.OSHUB_TOKEN }}
+
+      - name: Сборка пакета exe 
+        run: opm run make
+
+      - name: Заливка артифактов
+        uses: actions/upload-artifact@v2
+        with:
+          name: exe_package.zip
+          path: ./bin/${{ matrix.package_exe_mask }}
+      
+      - name: Заливка в релиз exe
+        uses: AButler/upload-release-assets@v1.0
+        with:
+          files: ./bin/${{ matrix.package_exe_mask }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
