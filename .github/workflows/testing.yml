@@ -34,4 +34,4 @@ jobs:
           
       # Задача тестирования, в результате ожидается успешное выполнение
       - name: Тестирование
-        run: oscript ./tasks/test.os
+        run: oscript ./tasks/test.os true

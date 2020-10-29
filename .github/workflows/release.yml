@@ -7,8 +7,6 @@ name: Подготовка релиза и публикация в хабе
 on:
     release:
         types: [published, edited]
-    pull_request:
-    push:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -36,26 +34,26 @@ jobs:
           opm install opm
           opm install
 
-      # - name: Сборка пакета
-      #   run: opm build
+      - name: Сборка пакета
+        run: opm build
 
-      # - name: Заливка артифактов
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: package.zip
-      #     path: ./${{ matrix.package_mask }}
+      - name: Заливка артифактов
+        uses: actions/upload-artifact@v2
+        with:
+          name: gitsync.ospx.zip
+          path: ./${{ matrix.package_mask }}
 
-      # - name: Заливка в релиз
-      #   uses: AButler/upload-release-assets@v1.0
-      #   with:
-      #     files: ./${{ matrix.package_mask }}
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Заливка в релиз
+        uses: AButler/upload-release-assets@v1.0
+        with:
+          files: ./${{ matrix.package_mask }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Публикация в hub.oscript.io
-      #   shell: bash
-      #   run: opm push -f ./${{ matrix.package_mask }} --token ${{ env.TOKEN }} -c stable
-      #   env:
-      #     TOKEN: ${{ secrets.OSHUB_TOKEN }}
+      - name: Публикация в hub.oscript.io
+        shell: bash
+        run: opm push -f ./${{ matrix.package_mask }} --token ${{ env.TOKEN }} -c stable
+        env:
+          TOKEN: ${{ secrets.OSHUB_TOKEN }}
 
       - name: Сборка пакета exe 
         run: |
@@ -65,7 +63,7 @@ jobs:
       - name: Заливка артифактов
         uses: actions/upload-artifact@v2
         with:
-          name: exe_package.zip
+          name: gitsync.exe.zip
           path: ./bin/${{ matrix.package_exe_mask }}
       
       - name: Заливка в релиз exe
