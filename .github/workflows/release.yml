@@ -58,7 +58,9 @@ jobs:
       #     TOKEN: ${{ secrets.OSHUB_TOKEN }}
 
       - name: Сборка пакета exe 
-        run: opm run make
+        run: |
+          opm run pack
+          opm run make
 
       - name: Заливка артифактов
         uses: actions/upload-artifact@v2
