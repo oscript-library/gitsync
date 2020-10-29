@@ -35,7 +35,7 @@ jobs:
           opm install
 
       - name: Сборка пакета
-        run: opm build
+        run: opm run build
 
       - name: Заливка артифактов
         uses: actions/upload-artifact@v2
