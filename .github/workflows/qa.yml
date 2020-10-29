@@ -42,6 +42,9 @@ jobs:
       - name: Покрытие кода
         run: oscript ./tasks/coverage.os true
 
+      - name: Compute branch name
+        uses: nixel2007/branch-name@v3
+        
       - name: Извлечение версии пакета
         shell: bash
         run: echo "##[set-output name=version;]`cat packagedef | grep ".Версия(" | sed 's|[^"]*"||' | sed -r 's/".+//'`"
