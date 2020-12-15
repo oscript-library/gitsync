@@ -1,0 +1,39 @@
+# MIT License
+# Copyright (C) 2020 Tymko Oleg <olegtymko@yandex.ru> and contributors
+# All rights reserved.
+
+name: Тестирование
+# Любой пуш и pr в проекте
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        oscript_version: ['1.4.0']
+        
+    steps:
+      # Загрузка проекта
+      - name: Актуализация
+        uses: actions/checkout@v2
+
+      # Установка OneScript конкретной версии
+      - name: Установка OneScript
+        uses: otymko/setup-onescript@v1.0
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        with:
+          version: ${{ matrix.oscript_version }}
+
+      # Установка зависимостей пакета
+      - name: Установка зависимостей
+        run: |
+          opm install opm
+          opm install --dev
+          
+      # Задача тестирования, в результате ожидается успешное выполнение
+      - name: Тестирование
+        run: oscript ./tasks/test.os true
