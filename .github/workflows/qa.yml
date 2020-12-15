@@ -28,6 +28,8 @@ jobs:
 
       # Установка OneScript конкретной версии
       - name: Установка OneScript
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         uses: otymko/setup-onescript@v1.0
         with:
           version: ${{ matrix.oscript_version }}
