@@ -1,7 +1,7 @@
 Синхронизация хранилища 1С с репозиторием git
 =============================================
 
-Обсудить [![ЧАТ ДЛЯ ОБЩЕНИЯ https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/EvilBeaver/oscript-library.svg)](https://gitter.im/EvilBeaver/oscript-library?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Обсудить [![oscript_library](https://img.shields.io/badge/chat-telegram-blue)](https://t.me/oscript_library)
 
 [![GitHub release](https://img.shields.io/github/release/khorevaa/gitsync.svg)](https://github.com/oscript-library/gitsync/releases)
 
