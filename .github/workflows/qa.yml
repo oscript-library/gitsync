@@ -11,4 +11,4 @@ jobs:
     with:
       github_repository: oscript-library/gitsync
     secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+      SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }} 
