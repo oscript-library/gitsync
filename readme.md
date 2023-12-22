@@ -1,9 +1,8 @@
 Синхронизация хранилища 1С с репозиторием git
 =============================================
-
-Обсудить [![oscript_library](https://img.shields.io/badge/chat-telegram-blue)](https://t.me/oscript_library)
-
-[![GitHub release](https://img.shields.io/github/release/khorevaa/gitsync.svg)](https://github.com/oscript-library/gitsync/releases)
+[![Last release](https://img.shields.io/github/v/release/oscript-library/gitsync?include_prereleases&label=last%20release&style=badge)](https://github.com/oscript-library/gitsync/releases/latest)
+[![GitHub issues](https://img.shields.io/github/issues-raw/oscript-library/gitsync?style=badge)](https://github.com/oscript-library/gitsync/issues)
+[![oscript_library](https://img.shields.io/badge/chat-telegram-blue)](https://t.me/oscript_library)
 
 Оглавление
 ==========
