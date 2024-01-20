@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        oscript_version: ['1.7.0']
+        oscript_version: ['1.8.4']
         
     steps:
       # Загрузка проекта
@@ -32,7 +32,7 @@ jobs:
       - name: Установка зависимостей
         run: |
           opm install opm
-          opm install --dev
+          opm install -l --dev
           
       # Задача тестирования, в результате ожидается успешное выполнение
       - name: Тестирование
