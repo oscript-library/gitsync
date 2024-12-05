@@ -61,7 +61,7 @@
 <a id="markdown-вручную" name="вручную"></a>
 ### Вручную
 > Запасной споcоб, например, когда на сервере нет доступа к Интернет
-1. Скачать файл `gitsync*.ospx` из раздела [releases](https://github.com/khorevaa/gitsync/releases)
+1. Скачать файл `gitsync*.ospx` из раздела [releases](https://github.com/oscript-library/gitsync/releases)
 2. Установить командой: `opm install -f <ПутьКФайлу>`
 
 <a id="markdown-Требования" name="Требования"></a>
