@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        oscript_version: ['1.9.0']
+        oscript_version: ['1.9.2']
         package_mask: ["gitsync-*.ospx"]
         package_exe_mask: ["gitsync.exe"]
     steps:

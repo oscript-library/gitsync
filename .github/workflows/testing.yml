@@ -3,8 +3,10 @@
 # All rights reserved.
 
 name: Тестирование
-# Любой пуш и pr в проекте
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
@@ -13,18 +15,16 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        oscript_version: ['1.9.0']
+        oscript_version: ['1.9.2']
         
     steps:
       # Загрузка проекта
       - name: Актуализация
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.2.2
 
       # Установка OneScript конкретной версии
       - name: Установка OneScript
-        uses: otymko/setup-onescript@v1.0
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        uses: otymko/setup-onescript@v1.5
         with:
           version: ${{ matrix.oscript_version }}
 
