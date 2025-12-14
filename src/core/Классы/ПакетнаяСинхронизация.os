@@ -313,7 +313,7 @@
 		.ПолеСтрока("Наименование storage-name name")
 		.ПолеСтрока("ПутьКХранилищу storage-path path")
 		.ПолеСтрока("ПутьКРабочемуКаталогу work-dir git-local-path dir")
-		.ПолеСтрока("ИмяРасширения extention extension")
+		.ПолеСтрока("ИмяРасширения extension extension")
 		;
 
 	Возврат КонструкторПараметров;
