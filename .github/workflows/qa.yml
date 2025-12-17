@@ -83,7 +83,7 @@ jobs:
         env:
             GITSYNC_V8VERSION: ${{ matrix.v8_version }}
         with:
-          run: opm run coverage
+          run: oscript ./tasks/coverage.os
 
       - name: Извлечение версии пакета
         shell: bash
