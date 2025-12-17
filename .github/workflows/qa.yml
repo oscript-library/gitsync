@@ -1,14 +1,115 @@
+# MIT License
+# Copyright (C) 2020 Tymko Oleg <olegtymko@yandex.ru> and contributors
+# All rights reserved.
+
 name: Контроль качества
 
 on:
   push:
-  pull_request:
+  pull_request_target:
   workflow_dispatch:
 
 jobs:
   sonar:
-    uses: autumn-library/workflows/.github/workflows/sonar.yml@main
-    with:
-      github_repository: oscript-library/gitsync
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }} 
+    if: github.repository == 'oscript-library/gitsync'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04]
+        oscript_version: ['1.9.2']
+        v8_version: ['8.3.24.1691']
+        locale: ['ru_RU']
+
+    steps:
+      - name: Актуализация
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+
+      # https://stackoverflow.com/questions/58033366/how-to-get-current-branch-within-github-actions
+      - name: Извлечение имени текущей ветки
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Установка OneScript
+        uses: otymko/setup-onescript@v1.5
+        with:
+          version: ${{ matrix.oscript_version }}
+
+      - name: Установка зависимостей
+        run: |
+          opm install opm
+          opm install --dev
+
+      - name: Подготовка окружения (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+            sudo apt-get update
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y locales libwebkit2gtk-4.0-37
+            sudo localedef -i ${{ matrix.locale }} -c -f UTF-8 -A /usr/share/locale/locale.alias ${{ matrix.locale }}.UTF-8
+
+      - name: Установка платформы 1С
+        uses: 1CDevFlow/onec-setup-action@main
+        with:
+          type: onec # Тип устанавливаемого приложения
+          onec_version: ${{ matrix.v8_version }}
+          cache: true
+          cache_distr: true
+        env: 
+          ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
+          ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+
+      - name: Установка лицензии (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          # Создание каталога
+          sudo mkdir -p /var/1C/licenses
+            
+          # Запись лицензии в файл
+          echo "${{ secrets.ONEC_LICENSE }}" | sudo tee /var/1C/licenses/licence.lic > /dev/null
+              
+          # Назначение прав
+          sudo chmod 777 -R /var/1C/licenses
+        shell: bash
+        env:
+          ONEC_LICENSE: ${{ secrets.ONEC_LICENSE }}
+
+      - name: Покрытие кода
+        uses: coactions/setup-xvfb@v1
+        env:
+            GITSYNC_V8VERSION: ${{ matrix.v8_version }}
+        with:
+          run: opm run coverage
+
+      - name: Извлечение версии пакета
+        shell: bash
+        run: echo "##[set-output name=version;]`cat packagedef | grep ".Версия(" | sed 's|[^"]*"||' | sed -r 's/".+//'`"
+        id: extract_version
+
+      - name: Установка sonar-scanner
+        uses: warchant/setup-sonar-scanner@v8
+
+      - name: Анализ в SonarQube (branch)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        run: sonar-scanner
+            -Dsonar.host.url=${{ secrets.SONARQUBE_HOST }}
+            -Dsonar.branch.name=${{ steps.extract_branch.outputs.branch }}
+            -Dsonar.projectVersion=${{ steps.extract_version.outputs.version }}
+
+      # https://docs.sonarqube.org/latest/analysis/pull-request/
+      - name: Анализ в SonarQube (pull-request)
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        run: sonar-scanner
+            -Dsonar.host.url=${{ secrets.SONARQUBE_HOST }}
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+            -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
+            -Dsonar.pullrequest.base=${{ github.event.pull_request.base.ref }}
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
