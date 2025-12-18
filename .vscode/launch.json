@@ -6,11 +6,13 @@
     "configurations": [
         {
             "name": "Отладка 1Script",
+            "type": "oscript",
             "request": "launch",
             "program": "${file}",
             "args": [],
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": "/usr/bin/oscript",
+            "debugPort": 2801
         }
     ]
 }
