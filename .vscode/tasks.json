@@ -112,7 +112,7 @@
         },
         {
             "label": "Exec feature",
-            "type": "bsl",
+            "type": "shell",
             "args": [
 				"/c",
 				"1bdd",
