@@ -43,7 +43,7 @@ jobs:
       - name: Установка зависимостей
         run: |
           opm install opm
-          opm install --dev
+          opm install -l --dev
 
       - name: Подготовка окружения (Linux)
         if: startsWith(matrix.os, 'ubuntu')
