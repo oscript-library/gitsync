@@ -1,0 +1,6 @@
+*.sh eol=lf
+*.md eol=lf
+*.yml eol=lf
+*.yaml eol=lf
+
+*.bat eol=crlf

@@ -1,5 +1,5 @@
     name: Расширение1
-    extention: test
+    extension: test
     path: <КаталогХранилищаРасширения>
     dir: <ПутьКаталогаИсходниковРасширения>
     storage-user: Администратор
