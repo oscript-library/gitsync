@@ -4,7 +4,7 @@
       "parameters": {
         "Typo": {
             "minWordLength": 3,
-            "userWordsToIgnore": "Гитсинк"
+            "userWordsToIgnore": "автопоиск,Гитсинк,закоммитить,Коммитом,Коммите,Коммита,коммита,Коммитами,Репо,Сохр"
         }
       }
     }
