@@ -3,37 +3,113 @@
 # All rights reserved.
 
 name: Тестирование
-# Любой пуш и pr в проекте
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request_target:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  pull-requests: write
 
 jobs:
-  build:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        oscript_version: ['1.9.0']
-        
+        oscript_version: ['1.9.2']
+        v8_version: ['8.3.21.1624', '8.3.24.1691']
+        os: [windows-latest, ubuntu-22.04]
+        locale: ['ru_RU']
+      fail-fast: false
     steps:
-      # Загрузка проекта
-      - name: Актуализация
-        uses: actions/checkout@v2
+      - name: Установка локали
+        if: matrix.os == startsWith(matrix.os, 'windows')
+        run: |
+          powershell -Command "Set-WinUILanguageOverride -Language ru-RU"
+          powershell -Command "Set-WinUserLanguageList ru-RU -Force"
+          powershell -Command "Set-Culture ru-RU"
+          powershell -Command "Set-WinSystemLocale ru-RU"
 
-      # Установка OneScript конкретной версии
+      - name: Актуализация
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+
       - name: Установка OneScript
-        uses: otymko/setup-onescript@v1.0
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        uses: otymko/setup-onescript@v1.5
         with:
           version: ${{ matrix.oscript_version }}
 
-      # Установка зависимостей пакета
       - name: Установка зависимостей
         run: |
           opm install opm
           opm install -l --dev
-          
-      # Задача тестирования, в результате ожидается успешное выполнение
+
+      - name: Подготовка окружения (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+            sudo apt-get update
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y locales libwebkit2gtk-4.0-37 libgl1-mesa-dri libgl1-mesa-glx mesa-utils
+            sudo localedef -i ${{ matrix.locale }} -c -f UTF-8 -A /usr/share/locale/locale.alias ${{ matrix.locale }}.UTF-8
+
+      - name: Установка libenchant1c2a для 8.3.21 (Linux)
+        if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.v8_version, '8.3.21')
+        run: |
+            sudo echo "deb http://cz.archive.ubuntu.com/ubuntu focal main universe" | sudo tee -a /etc/apt/sources.list
+            sudo apt-get update
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libenchant1c2a
+
+      - name: Установка платформы 1С
+        uses: 1CDevFlow/onec-setup-action@main
+        with:
+          type: onec # Тип устанавливаемого приложения
+          onec_version: ${{ matrix.v8_version }}
+          cache: true
+          cache_distr: true
+        env: 
+          ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
+          ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+
+      - name: Установка лицензии (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          # Создание каталога
+          sudo mkdir -p /var/1C/licenses
+            
+          # Запись лицензии в файл
+          echo "${{ secrets.ONEC_LICENSE }}" | sudo tee /var/1C/licenses/licence.lic > /dev/null
+              
+          # Назначение прав
+          sudo chmod 777 -R /var/1C/licenses
+        shell: bash
+        env:
+          ONEC_LICENSE: ${{ secrets.ONEC_LICENSE }}
+
+      - name: Установка лицензии (Windows)
+        if: startsWith(matrix.os, 'windows')
+        run: |
+            mkdir "C:\ProgramData\1C\licenses" -Force
+            echo $Env:ONEC_LICENSE | Out-File -FilePath "C:\ProgramData\1C\licenses\licence.lic" -Encoding ascii
+        shell: pwsh
+        env:
+            ONEC_LICENSE: ${{ secrets.ONEC_LICENSE }}
+
       - name: Тестирование
-        run: oscript ./tasks/test.os true
+        uses: coactions/setup-xvfb@v1
+        env:
+            GITSYNC_V8VERSION: ${{ matrix.v8_version }}
+        with:
+          run: oscript ./tasks/test.os
+
+      - name: Публикация отчета
+        if: success() || failure()
+        uses: mikepenz/action-junit-report@v6.0.1
+        with:
+          report_paths: '**/build/reports/*.xml'
+          fail_on_failure: true
+          require_passed_tests: true
+          comment: true
+          check_name: 'Результаты тестов. ОС: ${{ matrix.os }}. Версия 1С: ${{ matrix.v8_version }}. Версия OneScript: ${{ matrix.oscript_version }}'
