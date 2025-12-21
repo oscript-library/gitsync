@@ -1,29 +1,23 @@
 {
     "version": "2.0.0",
-    "_runner": "terminal",
-    "windows": {
-        "command": "cmd",
-        "args": ["/c", "chcp 65001 ;"]
-    },
-    "linux": {
-        "command": "sh",
-        "args": ["-c"]
-    },
-    "isShellCommand": true,
-    "showOutput": "silent",
     "tasks": [
         {
-            "taskName": "Testing project (opm test)",
+            "label": "Testing project (opm test)",
+            "type": "shell",
             "args": [
-                // "oscript",
-                // "src/opm.os",
+                "oscript",
                 "opm",
                 "test"
             ],
-            // "echoCommand": true,
-            // "showOutput": "always",
-            "suppressTaskName": true,
-            // "isTestCommand": false,
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": {
@@ -35,17 +29,22 @@
             }
         },
         {
-            "taskName": "Testing project",
+            "label": "Testing project",
+            "type": "shell",
             "args": [
                  "1testrunner",
                 "-runall",
                 "${workspaceRoot}/tests"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            // "isBuildCommand": false,
-            "isTestCommand": false,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "test",
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": {
@@ -57,17 +56,22 @@
             }
         },
         {
-            "taskName": "Testing current test-file",
+            "label": "Testing current test-file",
+            "type": "shell",
             "args": [
                  "1testrunner",
                 "-run",
                 "${file}",
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": false,
-            "isTestCommand": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "test",
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": {
@@ -79,18 +83,23 @@
             }
         },
         {
-            "taskName": "Exec all features",
+            "label": "Exec all features",
+            "type": "shell",
             "args": [
                  "1bdd",
                 "${workspaceRoot}/features",
                 "-out", 
                 "${workspaceRoot}/exec.log"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": true,
-            "isTestCommand": false,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "test",
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": {
@@ -102,18 +111,27 @@
             }
         },
         {
-            "taskName": "Exec feature",
+            "label": "Exec feature",
+            "type": "bsl",
             "args": [
-                 "1bdd",
-                "${file}",
-                "-out", 
-                "${workspaceRoot}/exec.log"
-            ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": false,
-            "isTestCommand": true,
+				"/c",
+				"1bdd",
+				"${file}",
+				"-fail-fast",
+				"-require",
+				"${workspaceRoot}/features",
+				"-out",
+				"${workspaceRoot}/exec.log"
+			],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "test",
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": [
@@ -127,7 +145,8 @@
             }
         },
         {
-            "taskName": "Generate feature steps",
+            "label": "Generate feature steps",
+            "type": "shell",
             "args": [
                  "1bdd",
                 "gen",
@@ -135,11 +154,15 @@
                 "-out", 
                 "${workspaceRoot}/exec.log"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": false,
-            "isTestCommand": false,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "build",
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": {
@@ -151,33 +174,46 @@
             }
         },
         {
-            "taskName": "OneScript: compile",
+            "label": "OneScript: compile",
+            "type": "shell",
             "args": [
                  "oscript",
                  "-encoding=utf-8",
                 "-compile",
                 "${file}"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": false
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "build",
         },
         {
-            "taskName": "OneScript: check",
+            "label": "OneScript: check",
+            "type": "shell",
             "args": [
                  "oscript",
                  "-encoding=utf-8",
                 "-check",
                 "${file}"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": false
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "test",
         },
         {
-            "taskName": "OneScript: make",
+            "label": "OneScript: make",
+            "type": "shell",
             "args": [
                  "oscript",
                  "-encoding=utf-8",
@@ -185,22 +221,33 @@
                 "${file}",
                 "${fileBasename}.exe"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": false
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "build",
         },
         {
-            "taskName": "OneScript: run",
+            "label": "OneScript: run",
+            "type": "shell",
             "args": [
                  "oscript",
                  "-encoding=utf-8",
                 "${file}"
             ],
-            "echoCommand": true,
-            "showOutput": "always",
-            "suppressTaskName": true,
-            "isBuildCommand": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": "build",
             "problemMatcher": {
                 "fileLocation": "absolute",
                 "pattern": {
