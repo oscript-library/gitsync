@@ -102,7 +102,7 @@ jobs:
         env:
             GITSYNC_V8VERSION: ${{ matrix.v8_version }}
         with:
-          run: oscript ./tasks/test.os
+          run: opm run test
 
       - name: Публикация отчета
         if: success() || failure()
