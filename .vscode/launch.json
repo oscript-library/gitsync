@@ -12,8 +12,7 @@
             "args": [],
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": "/usr/bin/oscript",
-            "debugPort": 2801,
-            "protocol": "internal"
+            "debugPort": 2801
         }
     ]
 }
