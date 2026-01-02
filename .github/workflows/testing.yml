@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        oscript_version: ['1.9.2']
+        oscript_version: ['1.9.2', '2.0.0']
         v8_version: ['8.3.21.1624', '8.3.24.1691']
         os: [windows-latest, ubuntu-22.04]
         locale: ['ru_RU']
