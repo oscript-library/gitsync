@@ -103,13 +103,4 @@ jobs:
             GITSYNC_V8VERSION: ${{ matrix.v8_version }}
         with:
           run: oscript ./tasks/test.os
-
-      - name: Публикация отчета
-        if: success() || failure()
-        uses: mikepenz/action-junit-report@v6.0.1
-        with:
-          report_paths: '**/build/reports/*.xml'
-          fail_on_failure: true
-          require_passed_tests: true
-          comment: true
-          check_name: 'Результаты тестов. ОС: ${{ matrix.os }}. Версия 1С: ${{ matrix.v8_version }}. Версия OneScript: ${{ matrix.oscript_version }}'
+  

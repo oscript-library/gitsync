@@ -87,11 +87,11 @@ jobs:
 
       - name: Извлечение версии пакета
         shell: bash
-        run: echo "##[set-output name=version;]`cat packagedef | grep ".Версия(" | sed 's|[^"]*"||' | sed -r 's/".+//'`"
+        run: echo "##[set-output name=version;]$(grep "Возврат" src/core/Модули/ПараметрыСистемы.os | grep -oP '"\K[^"]+' | head -1)"
         id: extract_version
 
       - name: Установка sonar-scanner
-        uses: warchant/setup-sonar-scanner@v8
+        uses: warchant/setup-sonar-scanner@v10
 
       - name: Анализ в SonarQube (branch)
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
