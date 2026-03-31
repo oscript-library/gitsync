@@ -87,7 +87,7 @@ jobs:
 
       - name: Извлечение версии пакета
         shell: bash
-        run: echo "##[set-output name=version;]$(grep "Возврат" src/core/Модули/ПараметрыСистемы.os | grep -oP '"\K[^"]+' | head -1)"
+        run: echo "##[set-output name=version;]$(grep "Возврат" src/core/Модули/ПараметрыСистемы.os | grep -oP '"\K[0-9]+\.[0-9]+\.[0-9]+(?=")' | head -1)"
         id: extract_version
 
       - name: Установка sonar-scanner
