@@ -370,7 +370,8 @@
 
 | Версия gitsync   | Плагины                                                                           |
 | ---------------- | --------------------------------------------------------------------------------- |
-| v3.7.2 (текущая) | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.3 (текущая) | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.2           | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
 | v3.7.1           | [v2.0.1](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.1) |
 | v3.7.0           | [v2.0.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.0) |
 
