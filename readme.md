@@ -217,13 +217,15 @@
 <a id="markdown-глобальные-переменные-окружения" name="глобальные-переменные-окружения"></a>
 #### Глобальные переменные окружения
 
-| Имя                 | Описание                                                                    |
-| ------------------- | --------------------------------------------------------------------------- |
-| `GITSYNC_V8VERSION` | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.)                      |
-| `GITSYNC_V8_PATH`   | путь к исполняемому файлу платформы 1С (Например, /opt/1C/v8.3/x86_64/1cv8) |
-| `GITSYNC_VERBOSE`   | вывод отладочной информации в процессе выполнения                           |
-| `GITSYNC_TEMP`      | путь к каталогу временных файлов                                            |
-| `GITSYNC_EMAIL`     | домен почты для пользователей git                                           |
+| Имя                         | Описание                                                                                       |
+| --------------------------- | ---------------------------------------------------------------------------------------------- |
+| `GITSYNC_V8VERSION`         | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.)                                         |
+| `GITSYNC_V8_PATH`           | путь к исполняемому файлу платформы 1С (Например, /opt/1C/v8.3/x86_64/1cv8)                    |
+| `GITSYNC_EXPORT_V8VERSION`  | маска версии платформы 1С для выгрузки конфигурации в файлы                                    |
+| `GITSYNC_EXPORT_V8_PATH`    | путь к исполняемому файлу платформы 1С для выгрузки конфигурации в файлы                       |
+| `GITSYNC_VERBOSE`           | вывод отладочной информации в процессе выполнения                                              |
+| `GITSYNC_TEMP`              | путь к каталогу временных файлов                                                               |
+| `GITSYNC_EMAIL`             | домен почты для пользователей git                                                              |
 
 <a id="markdown-переменные-окружения-команды" name="переменные-окружения-команды"></a>
 #### Переменные окружения команды
@@ -306,8 +308,10 @@
     export GITSYNC_STORAGE_USER=Admin
     export GITSYNC_STORAGE_PASSWORD=Secret
     export GITSYNC_V8VERSION=8.3.7
+    export GITSYNC_EXPORT_V8VERSION=8.3.27
     # Указание конкретного исполняемого файла платформы 1С. Путь надо обернуть в кавычки если он содержит пробелы.
     #export GITSYNC_V8_PATH=/opt/1C/v8.3/x86_64/1cv8
+    #export GITSYNC_EXPORT_V8_PATH=/opt/1C/v8.3/x86_64/1cv8
     export GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     export GITSYNC_TEMP=./temp/sync
     gitsync s
@@ -322,8 +326,10 @@
     set GITSYNC_STORAGE_USER=Admin
     set GITSYNC_STORAGE_PASSWORD=Secret
     set GITSYNC_V8VERSION=8.3.7
+    set GITSYNC_EXPORT_V8VERSION=8.3.27
     # Указание конкретного исполняемого файла платформы 1С. Путь надо обернуть в кавычки если он содержит пробелы.
     #set GITSYNC_V8_PATH="C:\Program Files (x86)\1cv8\8.3.12.1567\bin\1cv8.exe"
+    #set GITSYNC_EXPORT_V8_PATH="C:\Program Files (x86)\1cv8\8.3.27.1989\bin\1cv8.exe"
     set GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     set GITSYNC_TEMP=./temp/sync
 

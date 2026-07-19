@@ -22,12 +22,14 @@ sync (синоним s) - Выполняет синхронизацию хран
 
 ```
 ### Глобальные переменные окружения
-| Имя                 | Описание                                               |
-|---------------------|--------------------------------------------------------|
-| `GITSYNC_V8VERSION` | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.) |
-| `GITSYNC_VERBOSE`   | вывод отладочной информации в процессе выполнения      |
-| `GITSYNC_TEMP`      | путь к каталогу временных файлов                       |
-| `GITSYNC_EMAIL`     | домен почты для пользователей git                      |
+| Имя                         | Описание                                                                    |
+|-----------------------------|-----------------------------------------------------------------------------|
+| `GITSYNC_V8VERSION`         | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.)                      |
+| `GITSYNC_EXPORT_V8VERSION`  | маска версии платформы 1С для выгрузки конфигурации в файлы                 |
+| `GITSYNC_EXPORT_V8_PATH`    | путь к исполняемому файлу платформы 1С для выгрузки конфигурации в файлы    |
+| `GITSYNC_VERBOSE`           | вывод отладочной информации в процессе выполнения                           |
+| `GITSYNC_TEMP`              | путь к каталогу временных файлов                                            |
+| `GITSYNC_EMAIL`             | домен почты для пользователей git                                           |
 
 ### Переменные окружения команды
 
@@ -96,6 +98,7 @@ sync (синоним s) - Выполняет синхронизацию хран
     export GITSYNC_STORAGE_USER=Admin
     export GITSYNC_STORAGE_PASSWORD=Secret
     export GITSYNC_V8VERSION=8.3.7
+    export GITSYNC_EXPORT_V8VERSION=8.3.27
     export GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     export GITSYNC_TEMP=./temp/sync
     gitsync s
@@ -108,6 +111,7 @@ sync (синоним s) - Выполняет синхронизацию хран
     set GITSYNC_STORAGE_USER=Admin
     set GITSYNC_STORAGE_PASSWORD=Secret
     set GITSYNC_V8VERSION=8.3.7
+    set GITSYNC_EXPORT_V8VERSION=8.3.27
     set GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     set GITSYNC_TEMP=./temp/sync
 
