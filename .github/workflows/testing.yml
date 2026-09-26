@@ -6,12 +6,13 @@ name: Тестирование
 
 on:
   push:
-  pull_request:
+  pull_request_target:
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    environment: ${{ (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository) && 'external-pr' || '' }}
     strategy:
       matrix:
         oscript_version: ['1.9.2']
@@ -30,6 +31,9 @@ jobs:
 
       - name: Актуализация
         uses: actions/checkout@v4.2.2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.ref_name }}
 
       - name: Установка OneScript
         uses: otymko/setup-onescript@v1.5
