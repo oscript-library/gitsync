@@ -13,6 +13,7 @@ jobs:
   sonar:
     if: github.repository == 'oscript-library/gitsync'
     runs-on: ${{ matrix.os }}
+    environment: ${{ (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository) && 'external-pr' || '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -26,7 +27,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          ref: ${{ github.event.pull_request.head.sha || github.ref_name }}
           fetch-depth: 0
 
       # https://stackoverflow.com/questions/58033366/how-to-get-current-branch-within-github-actions
@@ -104,7 +105,7 @@ jobs:
 
       # https://docs.sonarqube.org/latest/analysis/pull-request/
       - name: Анализ в SonarQube (pull-request)
-        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+        if: github.event_name == 'pull_request_target'
         env:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: sonar-scanner
