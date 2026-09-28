@@ -43,7 +43,7 @@ jobs:
           path: ./${{ matrix.package_mask }}
 
       - name: Заливка в релиз
-        uses: AButler/upload-release-assets@v3.0.1
+        uses: AButler/upload-release-assets@v4.0.0
         with:
           files: ./${{ matrix.package_mask }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
