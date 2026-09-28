@@ -37,7 +37,7 @@ jobs:
         run: opm run build
 
       - name: Заливка артефактов
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: gitsync.ospx.zip
           path: ./${{ matrix.package_mask }}
