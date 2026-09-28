@@ -31,7 +31,7 @@ jobs:
           powershell -Command "Set-WinSystemLocale ru-RU"
 
       - name: Актуализация
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
           ref: ${{ github.event.pull_request.head.sha || github.ref_name }}
