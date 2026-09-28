@@ -13,6 +13,7 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     environment: ${{ (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository) && 'external-pr' || '' }}
+    cache-mode: write
     strategy:
       matrix:
         oscript_version: ['1.9.2']
