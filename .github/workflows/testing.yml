@@ -35,6 +35,7 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
           ref: ${{ github.event.pull_request.head.sha || github.ref_name }}
+          allow-unsafe-pr-checkout: true
 
       - name: Установка OneScript
         uses: otymko/setup-onescript@v1.5
