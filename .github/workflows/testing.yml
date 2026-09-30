@@ -52,12 +52,6 @@ jobs:
             sudo apt-get update
             sudo DEBIAN_FRONTEND=noninteractive apt-get install -y locales libwebkit2gtk-4.0-37 libgl1-mesa-dri libgl1-mesa-glx mesa-utils
             sudo localedef -i ${{ matrix.locale }} -c -f UTF-8 -A /usr/share/locale/locale.alias ${{ matrix.locale }}.UTF-8
-            for src in /opt/1cv8/x86_64/*/libstdc++.so.6; do
-              [ -f "$src" ] || continue
-              dst="${src}.disabled"
-              echo "Renaming: $src -> $dst"
-              sudo mv -v -- "$src" "$dst"
-            done
 
       - name: Установка libenchant1c2a для 8.3.21 (Linux)
         if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.v8_version, '8.3.21')
@@ -76,6 +70,17 @@ jobs:
         env: 
           ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
           ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+
+                - name: Удаление устаревшей библиотеки (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          for src in /opt/1cv8/x86_64/*/libstdc++.so.6; do
+            [ -f "$src" ] || continue
+            dst="${src}.disabled"
+            echo "Renaming: $src -> $dst"
+            sudo mv -v -- "$src" "$dst"
+          done
+        shell: bash
 
       - name: Установка лицензии (Linux)
         if: startsWith(matrix.os, 'ubuntu')
