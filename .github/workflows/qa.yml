@@ -53,6 +53,12 @@ jobs:
             sudo apt-get update
             sudo DEBIAN_FRONTEND=noninteractive apt-get install -y locales libwebkit2gtk-4.0-37
             sudo localedef -i ${{ matrix.locale }} -c -f UTF-8 -A /usr/share/locale/locale.alias ${{ matrix.locale }}.UTF-8
+            for src in /opt/1cv8/x86_64/*/libstdc++.so.6; do
+              [ -f "$src" ] || continue
+              dst="${src}.disabled"
+              echo "Renaming: $src -> $dst"
+              sudo mv -v -- "$src" "$dst"
+            done
 
       - name: Установка платформы 1С
         uses: 1CDevFlow/onec-setup-action@main
