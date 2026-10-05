@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        oscript_version: ['stable']
+        oscript_version: ['2.2.1']
         v8_version: ['8.3.24.1691']
         locale: ['ru_RU']
 

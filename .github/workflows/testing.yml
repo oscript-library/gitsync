@@ -16,7 +16,7 @@ jobs:
     cache-mode: write
     strategy:
       matrix:
-        oscript_version: ['stable', 'dev']
+        oscript_version: ['2.2.1', 'dev']
         v8_version: ['8.3.21.1624', '8.3.24.1691']
         os: [windows-latest, ubuntu-22.04]
         locale: ['ru_RU']
