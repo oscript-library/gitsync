@@ -121,7 +121,6 @@
 Больше примеров: `gitsync usage clone`
 
 **b. Если у Вас нет удаленного репозитория** - используйте команду `init`
-
 Синтаксис команды: `gitsync init [ОПЦИИ] PATH [WORKDIR]`
 
 Пример использования:
@@ -217,13 +216,15 @@
 <a id="markdown-глобальные-переменные-окружения" name="глобальные-переменные-окружения"></a>
 #### Глобальные переменные окружения
 
-| Имя                 | Описание                                                                    |
-| ------------------- | --------------------------------------------------------------------------- |
-| `GITSYNC_V8VERSION` | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.)                      |
-| `GITSYNC_V8_PATH`   | путь к исполняемому файлу платформы 1С (Например, /opt/1C/v8.3/x86_64/1cv8) |
-| `GITSYNC_VERBOSE`   | вывод отладочной информации в процессе выполнения                           |
-| `GITSYNC_TEMP`      | путь к каталогу временных файлов                                            |
-| `GITSYNC_EMAIL`     | домен почты для пользователей git                                           |
+| Имя                         | Описание                                                                                       |
+| --------------------------- | ---------------------------------------------------------------------------------------------- |
+| `GITSYNC_V8VERSION`         | маска версии платформы (8.3, 8.3.5, 8.3.6.2299 и т.п.)                                         |
+| `GITSYNC_V8_PATH`           | путь к исполняемому файлу платформы 1С (например, /opt/1C/x86_64/8.3.24.1819/1cv8)             |
+| `GITSYNC_EXPORT_V8VERSION`  | маска версии платформы 1С для выгрузки конфигурации в файлы                                    |
+| `GITSYNC_EXPORT_V8_PATH`    | путь к исполняемому файлу платформы 1С для выгрузки конфигурации в файлы                       |
+| `GITSYNC_VERBOSE`           | вывод отладочной информации в процессе выполнения                                              |
+| `GITSYNC_TEMP`              | путь к каталогу временных файлов                                                               |
+| `GITSYNC_EMAIL`             | домен почты для пользователей git                                                              |
 
 <a id="markdown-переменные-окружения-команды" name="переменные-окружения-команды"></a>
 #### Переменные окружения команды
@@ -290,10 +291,18 @@
 - Указание исполняемого файла нужной версии платформы
 
     ```sh
-    gitsync --v8-path /opt/1C/v8.3/x86_64/1cv8 s -uAdmin -p=Secret C:/Хранилище_1С/ C:/work_dir/
+    gitsync --v8-path /opt/1C/x86_64/8.3.24.1819/1cv8 s -uAdmin -p=Secret C:/Хранилище_1С/ C:/work_dir/
     ```
 
-    Команда синхронизации будет выполнена с использованием исполняемого файла платформы `/opt/1C/v8.3/x86_64/1cv8` (приведен синтаксис для linux; вариант для Windows см. ниже).
+    Команда синхронизации будет выполнена с использованием исполняемого файла платформы `/opt/1C/x86_64/8.3.24.1819/1cv8` (приведен синтаксис для linux; вариант для Windows см. ниже).
+
+- Использование разных версий платформы для получения изменений из хранилища и для выгрузки конфигурации в файлы
+
+    ```sh
+    gitsync --v8-path /opt/1C/x86_64/8.5.1.1529/1cv8 --export-v8-path /opt/1C/x86_64/8.3.24.1819/1cv8 s -uAdmin -p=Secret C:/Хранилище_1С/ C:/work_dir/
+    ```
+
+    Для работы с хранилищем будет использована платформа 8.5.1.1529, а для последующей выгрузки версии в исходники - платформа 8.3.24.1819. Вместо `--export-v8-path` можно указать `--export-v8version`, если нужно задать только маску версии, а не полный путь к исполняемому файлу.
 
 - Вызов команды без указания параметров, с использованием переменных окружения
 
@@ -306,8 +315,10 @@
     export GITSYNC_STORAGE_USER=Admin
     export GITSYNC_STORAGE_PASSWORD=Secret
     export GITSYNC_V8VERSION=8.3.7
+    export GITSYNC_EXPORT_V8VERSION=8.3.27
     # Указание конкретного исполняемого файла платформы 1С. Путь надо обернуть в кавычки если он содержит пробелы.
-    #export GITSYNC_V8_PATH=/opt/1C/v8.3/x86_64/1cv8
+    #export GITSYNC_V8_PATH=/opt/1C/x86_64/8.5.1.1819/1cv8
+    #export GITSYNC_EXPORT_V8_PATH=/opt/1C/x86_64/8.3.24.1819/1cv8
     export GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     export GITSYNC_TEMP=./temp/sync
     gitsync s
@@ -322,8 +333,10 @@
     set GITSYNC_STORAGE_USER=Admin
     set GITSYNC_STORAGE_PASSWORD=Secret
     set GITSYNC_V8VERSION=8.3.7
+    set GITSYNC_EXPORT_V8VERSION=8.3.27
     # Указание конкретного исполняемого файла платформы 1С. Путь надо обернуть в кавычки если он содержит пробелы.
     #set GITSYNC_V8_PATH="C:\Program Files (x86)\1cv8\8.3.12.1567\bin\1cv8.exe"
+    #set GITSYNC_EXPORT_V8_PATH="C:\Program Files (x86)\1cv8\8.3.27.1989\bin\1cv8.exe"
     set GITSYNC_VERBOSE=true #Можно использовать Да/Ложь/Нет/Истина
     set GITSYNC_TEMP=./temp/sync
 
@@ -366,15 +379,16 @@
 
 > ВНИМАНИЕ! После обновления gitsync для **обновления** встроенных плагинов необходимо однократно выполнить команду `gitsync plugins init`
 
-Соответствие версии gitsync и версии [gitsync-plugins](https://github.com/khorevaa/gitsync-plugins).
+Соответствие версии gitsync, минимальной версии OneScript и версии [gitsync-plugins](https://github.com/khorevaa/gitsync-plugins).
 
-| Версия gitsync   | Плагины                                                                           |
-| ---------------- | --------------------------------------------------------------------------------- |
-| v3.8.0 (текущая) | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
-| v3.7.3           | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
-| v3.7.2           | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
-| v3.7.1           | [v2.0.1](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.1) |
-| v3.7.0           | [v2.0.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.0) |
+| Версия gitsync   | Мин. версия OneScript | Версия встроенных плагинов                                                        |
+| ---------------- | --------------------- | --------------------------------------------------------------------------------- |
+| v3.9.0 (текущая) | **v2.2.1**            | [v2.1.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.1.0) |
+| v3.8.0           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.3           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.2           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.1           | v1.9.2                | [v2.0.1](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.1) |
+| v3.7.0           | v1.9.2                | [v2.0.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.0) |
 
 Все установленные плагины расположены по пути `%USERPROFILE%\AppData\Local\gitsync\plugins` для Windows или `$HOME/.local/share` для Linux. В этом же каталоге находится файл  `plugins.json`, который хранит информацию об активных и неактивных плагинах. В случае каких-либо ошибок, связанных с работой плагинов, можно удалить этот каталог, а затем инициализировать и активировать нужные плагины заново.
 

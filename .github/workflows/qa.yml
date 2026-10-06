@@ -14,21 +14,23 @@ jobs:
     if: github.repository == 'oscript-library/gitsync'
     runs-on: ${{ matrix.os }}
     environment: ${{ (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository) && 'external-pr' || '' }}
+    cache-mode: write
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        oscript_version: ['1.9.2']
+        oscript_version: ['2.2.1']
         v8_version: ['8.3.24.1691']
         locale: ['ru_RU']
 
     steps:
       - name: Актуализация
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
           ref: ${{ github.event.pull_request.head.sha || github.ref_name }}
           fetch-depth: 0
+          allow-unsafe-pr-checkout: true
 
       # https://stackoverflow.com/questions/58033366/how-to-get-current-branch-within-github-actions
       - name: Извлечение имени текущей ветки
@@ -63,6 +65,17 @@ jobs:
         env: 
           ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
           ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+
+      - name: Удаление устаревшей библиотеки (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          for src in /opt/1cv8/x86_64/*/libstdc++.so.6; do
+            [ -f "$src" ] || continue
+            dst="${src}.disabled"
+            echo "Renaming: $src -> $dst"
+            sudo mv -v -- "$src" "$dst"
+          done
+        shell: bash
 
       - name: Установка лицензии (Linux)
         if: startsWith(matrix.os, 'ubuntu')

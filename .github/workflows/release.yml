@@ -14,12 +14,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        oscript_version: ['1.9.2']
+        oscript_version: ['2.2.1']
         package_mask: ["gitsync-*.ospx"]
     steps:
       # Загрузка проекта
       - name: Актуализация
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
 
       # Установка OneScript конкретной версии
       - name: Установка OneScript
@@ -37,13 +37,13 @@ jobs:
         run: opm run build
 
       - name: Заливка артефактов
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: gitsync.ospx.zip
           path: ./${{ matrix.package_mask }}
 
       - name: Заливка в релиз
-        uses: AButler/upload-release-assets@v3.0.1
+        uses: AButler/upload-release-assets@v4.0.0
         with:
           files: ./${{ matrix.package_mask }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
