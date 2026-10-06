@@ -121,7 +121,6 @@
 Больше примеров: `gitsync usage clone`
 
 **b. Если у Вас нет удаленного репозитория** - используйте команду `init`
-
 Синтаксис команды: `gitsync init [ОПЦИИ] PATH [WORKDIR]`
 
 Пример использования:
@@ -380,15 +379,16 @@
 
 > ВНИМАНИЕ! После обновления gitsync для **обновления** встроенных плагинов необходимо однократно выполнить команду `gitsync plugins init`
 
-Соответствие версии gitsync и версии [gitsync-plugins](https://github.com/khorevaa/gitsync-plugins).
+Соответствие версии gitsync, минимальной версии OneScript и версии [gitsync-plugins](https://github.com/khorevaa/gitsync-plugins).
 
-| Версия gitsync   | Плагины                                                                           |
-| ---------------- | --------------------------------------------------------------------------------- |
-| v3.8.0 (текущая) | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
-| v3.7.3           | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
-| v3.7.2           | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
-| v3.7.1           | [v2.0.1](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.1) |
-| v3.7.0           | [v2.0.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.0) |
+| Версия gitsync   | Мин. версия OneScript | Версия встроенных плагинов                                                        |
+| ---------------- | --------------------- | --------------------------------------------------------------------------------- |
+| v3.9.0 (текущая) | **v2.2.1**            | [v2.1.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.1.0) |
+| v3.8.0           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.3           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.2           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
+| v3.7.1           | v1.9.2                | [v2.0.1](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.1) |
+| v3.7.0           | v1.9.2                | [v2.0.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.0) |
 
 Все установленные плагины расположены по пути `%USERPROFILE%\AppData\Local\gitsync\plugins` для Windows или `$HOME/.local/share` для Linux. В этом же каталоге находится файл  `plugins.json`, который хранит информацию об активных и неактивных плагинах. В случае каких-либо ошибок, связанных с работой плагинов, можно удалить этот каталог, а затем инициализировать и активировать нужные плагины заново.
 
