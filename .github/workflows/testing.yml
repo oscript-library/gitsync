@@ -6,7 +6,7 @@ name: Тестирование
 
 on:
   push:
-  pull_request_target:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -21,6 +21,7 @@ jobs:
         os: [windows-latest, ubuntu-22.04]
         locale: ['ru_RU']
       fail-fast: false
+        
     steps:
       - name: Установка локали
         if: matrix.os == startsWith(matrix.os, 'windows')
