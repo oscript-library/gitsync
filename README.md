@@ -383,7 +383,7 @@
 
 | Версия gitsync   | Мин. версия OneScript | Версия встроенных плагинов                                                        |
 | ---------------- | --------------------- | --------------------------------------------------------------------------------- |
-| v3.9.0 (текущая) | **v2.2.1**            | [v2.1.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.1.0) |
+| v3.9.* (текущая) | **v2.2.1**            | [v2.1.0](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.1.0) |
 | v3.8.0           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
 | v3.7.3           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
 | v3.7.2           | v1.9.2                | [v2.0.3](https://github.com/oscript-library/gitsync-plugins/releases/tag/v.2.0.3) |
